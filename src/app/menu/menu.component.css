@@ -1,21 +1,13 @@
-#menu {
-  padding: 0;
-  background-color: rgb(255, 221, 158);
-  width: 100%;
-  height: 40px;
+.example-spacer {
+  flex: 1 1 auto;
 }
 
-#menu li {
-  display: inline;
+.main-buttons {
+  margin-left: 10px;
 }
 
-#menu li span {
-  font-family: Arial;
-  float: left;
-  padding: 10px;
+.main-buttons:hover {
+  background-color: white;
+  color: grey;
 }
 
-#acceso {
-  position: absolute;
-  right: 10px;
-}

@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl } from "@angular/forms";
-
 import { Usuario } from 'src/app/shared/classes/usuario';
 import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   public usuario: Usuario
-  public inputControl: FormControl;
+
   constructor(
     private loginService: LoginService,
     private router: Router) {
     this.usuario = new Usuario();
-    this.inputControl = new FormControl();
   }
 
   ngOnInit(): void {

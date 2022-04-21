@@ -1,6 +1,28 @@
-<ul id="menu">
-  <li><span> </span></li>
-  <li routerLink="/nosotros"><span>Acerca de</span></li>
-  <li id="acceso" *ngIf="miToken == 0" class="acceso" routerLink="/login"><span>Acceso</span></li>
-  <li id="acceso" *ngIf="miToken != 0" class="acceso" (click)="logout()"><span><strong>Usuario:</strong> {{ nombreUsuario }}</span></li>
-</ul>
+<mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/nosotros">Acerca de</button>
+    <button mat-menu-item routerLink="/login">Log in</button>
+    <button mat-menu-item routerLink="/register">Register</button>
+    <button mat-menu-item routerLink="/favoritos">Favoritos</button>
+  </mat-menu>
+
+  <span routerLink="principal">BestPC</span>
+
+  <button class="main-buttons" mat-raised-button routerLink="/nosotros">Acerca de</button>
+  <button class="main-buttons" mat-raised-button routerLink="/login">Log in</button>
+  <button class="main-buttons" mat-raised-button routerLink="/register">Register</button>
+  <button class="main-buttons" mat-raised-button routerLink="/favoritos">Favoritos</button>
+
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+
+</mat-toolbar>
