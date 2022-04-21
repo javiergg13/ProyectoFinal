@@ -10,7 +10,6 @@ import { LoginService } from 'src/app/shared/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // Atributos
   public usuario: Usuario
 
   constructor(
