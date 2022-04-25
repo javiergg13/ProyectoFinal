@@ -1,0 +1,12 @@
+<carousel 
+[cellsToShow]="3"
+[loop]="true"
+[autoplay]="true"
+[autoplayInterval]="3000"
+[dots]="true"
+[transitionDuration]="1000"
+[borderRadius]="15">
+    <div class="carousel-cell" *ngFor="let item of images">
+        <img [src]="item.path">
+    </div>
+</carousel>

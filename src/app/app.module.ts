@@ -22,6 +22,8 @@ import { FavoritosComponent } from './views/favoritos/favoritos.component';
 import { ViewsComponent } from './views/views.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PrincipalComponent } from './views/principal/principal.component';
+import { CarouselComponent } from './views/carousel/carousel.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { PrincipalComponent } from './views/principal/principal.component';
     RegisterComponent,
     FavoritosComponent,
     ViewsComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { PrincipalComponent } from './views/principal/principal.component';
     MatToolbarModule,
     MatMenuModule,
     MatGridListModule,
+    IvyCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

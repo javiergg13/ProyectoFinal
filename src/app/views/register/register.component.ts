@@ -1,38 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Usuario } from 'src/app/shared/classes/usuario';
-import { LoginService } from 'src/app/shared/services/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ConfirmedValidator } from '../../shared/services/confirmed.validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  public usuario: Usuario
+  public hide: boolean = true;
+  public usuario: FormGroup
 
-  constructor(
-    private loginService: LoginService,
-    private router: Router) {
-    this.usuario = new Usuario();
+  constructor(private formBuilder: FormBuilder) {
+    this.usuario = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      contraseña: ['', [Validators.required, Validators.pattern(new RegExp(/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}/))]],
+      apellidos: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(new RegExp(/[a-z0-9_-]+@[a-z0-9.-]+\.[a-z]{2,4}/))]],
+      cp: ['', [Validators.required, Validators.pattern(new RegExp(/(\d){5}/))]],
+      edad: ['', [Validators.required, Validators.pattern(new RegExp(/(\d){1,2}/))]],
+      telefono: ['', [Validators.required, Validators.pattern(new RegExp(/(\d){9}/))]],
+      contraseñaConfirmacion: ['', [Validators.required, Validators.pattern(new RegExp(/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}/))]]
+    }, {
+        validator: ConfirmedValidator('contraseña', 'contraseñaConfirmacion')}
+    );
   }
-
   ngOnInit(): void {
-  }
-
-  public submit(): void {
-
-    this.loginService.login(this.usuario).subscribe(
-      (data: number) => {
-        localStorage.setItem('nombreUsuario', this.usuario.nombre);
-        localStorage.setItem('miTokenPersonal',`${ data }`);
-
-        this.router.navigate(['/listado']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
-    )
   }
 
 }

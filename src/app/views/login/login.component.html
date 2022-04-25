@@ -1,25 +1,29 @@
 <div id="contenedor" class="form">
-  <form (ngSubmit)="submit()" #usuarioForm="ngForm">
+  <form [formGroup]="usuario">
     <div class="form-group">
-      <label for="usuario">Nombre:</label>
-      <input type="text" [(ngModel)]="usuario.nombre"
-        name="nombre" #nombre="ngModel" required>
-      <div *ngIf="nombre.invalid && nombre.dirty" class="alert">
-        <div *ngIf="nombre.errors?.required">Campo requerido</div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="contrasegna">Contraseña:</label>
-      <input type="password" [(ngModel)]="usuario.contrasegna"
-        name="contrasegna" #contrasegna="ngModel" required minlength="4">
-      <div *ngIf="contrasegna.invalid && contrasegna.dirty" class="alert">
-        <div *ngIf="contrasegna.errors?.required">Campo requerido</div>
-        <div *ngIf="contrasegna.errors?.minlength">Mínimo 4 caracteres</div>
-      </div>
-    </div>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput
+               type="text"
+               placeholder="example54"
+               formControlName="nombre"
+               >
+        <mat-error *ngIf="usuario.get('nombre')?.errors?.required">Introduce un nombre</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"
+               formControlName="contraseña"
+               >
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="usuario.get('contraseña')?.errors?.required">Introduce una contraseña</mat-error>
+        <mat-error *ngIf="usuario.get('contraseña')?.errors?.pattern">Contraseña no valida</mat-error>
+      </mat-form-field>
+    </div>  
 
-    <button type="submit" [disabled]="!usuarioForm.form.valid">Entrar</button>
-    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button color="warn">Log in</button>
     <br/>
     <div>
       <p>¿No tienes una cuenta? <a routerLink="/register">Registrate</a></p>

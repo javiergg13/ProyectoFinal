@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormControl } from "@angular/forms";
-
-import { Usuario } from 'src/app/shared/classes/usuario';
-import { LoginService } from 'src/app/shared/services/login.service';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -11,31 +7,16 @@ import { LoginService } from 'src/app/shared/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public usuario: Usuario
-  public inputControl: FormControl;
-  constructor(
-    private loginService: LoginService,
-    private router: Router) {
-    this.usuario = new Usuario();
-    this.inputControl = new FormControl();
+  public hide: boolean = true;
+  public usuario: FormGroup
+
+  constructor(private formBuilder: FormBuilder) {
+    this.usuario = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      contraseña: ['', [Validators.required, Validators.pattern(new RegExp(/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}/))]]
+    });
   }
 
   ngOnInit(): void {
   }
-
-  public submit(): void {
-
-    this.loginService.login(this.usuario).subscribe(
-      (data: number) => {
-        localStorage.setItem('nombreUsuario', this.usuario.nombre);
-        localStorage.setItem('miTokenPersonal',`${ data }`);
-
-        this.router.navigate(['/listado']);
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
-    )
-  }
-
 }
