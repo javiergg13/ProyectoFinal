@@ -1,7 +1,7 @@
 <div id="contenedor" class="form">
   <form [formGroup]="usuario">
     <div class="form-group">
-      <mat-form-field>
+      <mat-form-field appearance="legacy">
         <mat-label>Nombre</mat-label>
         <input matInput
                type="text"
@@ -23,7 +23,7 @@
       </mat-form-field>
     </div>  
 
-    <button mat-raised-button color="warn">Log in</button>
+    <button mat-raised-button >Log in</button>
     <br/>
     <div>
       <p>¿No tienes una cuenta? <a routerLink="/register">Registrate</a></p>

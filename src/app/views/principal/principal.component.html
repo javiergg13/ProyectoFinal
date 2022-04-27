@@ -1,1 +1,23 @@
-<app-carousel></app-carousel>
+<div class="principal">
+    <div class="filter">
+        <app-filter-cb></app-filter-cb>
+        <app-filter-range></app-filter-range>
+    </div>
+    <div class="carousel">
+        <!-- <app-cuerpo></app-cuerpo> -->
+        <carousel 
+        [cellsToShow]="1"
+        [loop]="true"
+        [autoplay]="true"
+        [autoplayInterval]="3000"
+        [dots]="true"
+        [transitionDuration]="1000"
+        [borderRadius]="15"
+        *ngFor="let producto of productos"
+        >
+            <div class="carousel-cell" *ngFor="let item of producto.path">
+                <img [src]="item" class="img-cell">
+            </div>
+        </carousel>
+    </div>
+</div>

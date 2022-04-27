@@ -1,5 +1,5 @@
 <carousel 
-[cellsToShow]="3"
+[cellsToShow]="1"
 [loop]="true"
 [autoplay]="true"
 [autoplayInterval]="3000"
@@ -7,6 +7,7 @@
 [transitionDuration]="1000"
 [borderRadius]="15">
     <div class="carousel-cell" *ngFor="let item of images">
-        <img [src]="item.path">
+        <h2>{{item.title}}</h2>
+        <img [src]="item.path" class="img-cell">
     </div>
 </carousel>

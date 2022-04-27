@@ -23,7 +23,13 @@ import { ViewsComponent } from './views/views.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PrincipalComponent } from './views/principal/principal.component';
 import { CarouselComponent } from './views/carousel/carousel.component';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { FilterCBComponent } from './views/filter-cb/filter-cb.component';
+import { FilterRangeComponent } from './views/filter-range/filter-range.component';
+import { CuerpoComponent } from './views/cuerpo/cuerpo.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +41,10 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     FavoritosComponent,
     ViewsComponent,
     PrincipalComponent,
-    CarouselComponent
+    CarouselComponent,
+    FilterCBComponent,
+    FilterRangeComponent,
+    CuerpoComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,9 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     MatToolbarModule,
     MatMenuModule,
     MatGridListModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

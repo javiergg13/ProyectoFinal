@@ -1,0 +1,14 @@
+.active-filter-bg {
+    background-color: teal !important;
+}
+ 
+.active-filter-text {
+    color: white;
+}
+
+.budget-range {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+   

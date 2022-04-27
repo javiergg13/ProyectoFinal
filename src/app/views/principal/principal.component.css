@@ -1,0 +1,18 @@
+.principal {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.filter {
+    display: flex;
+    flex: 0;
+    flex-direction: column;
+}
+
+.carousel {
+    min-width: 300px;
+    max-width: 350px;
+    display: flex;
+    margin-left: 15px;
+}

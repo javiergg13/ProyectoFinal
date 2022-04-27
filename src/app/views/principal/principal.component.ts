@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
+  productos = [
+    {title: 'titulo', path: ['/assets/rtx3060ti.jpg', '/assets/rtx3060.jpg',
+'/assets/rx6600.jpg',
+'/assets/rtx3080.jpg',
+'/assets/rtx3070ti.jpg',
+ '/assets/rx6700xt.jpg']},
+ {title: 'titulo', path: ['/assets/rtx3060ti.jpg', '/assets/rtx3060.jpg',
+'/assets/rx6600.jpg',
+'/assets/rtx3080.jpg',
+'/assets/rtx3070ti.jpg',
+ '/assets/rx6700xt.jpg']},
+ {title: 'titulo', path: ['/assets/rtx3060ti.jpg', '/assets/rtx3060.jpg',
+'/assets/rx6600.jpg',
+'/assets/rtx3080.jpg',
+'/assets/rtx3070ti.jpg',
+ '/assets/rx6700xt.jpg']}
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
 
 }
