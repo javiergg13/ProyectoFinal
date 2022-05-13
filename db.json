@@ -1,0 +1,67 @@
+{
+  "usuario": [
+    {
+      "id": "00-7777777",
+      "nombre": "Javier",
+      "apellidos": "Guerrero Gallo",
+      "nickname": "xJavii13",
+      "password": "KadfhJ7456",
+      "email": "guerrerogallojavier@gmail.com",
+      "cp": 33970,
+      "tel": 674774983,
+      "favoritos": [
+        "id_pc"
+      ]
+    },
+    {
+      "nombre": "Juan",
+      "apellidos": "Masfd",
+      "contraseña": "Jamon555",
+      "email": "kasjfsf@gmail.com",
+      "cp": "55555",
+      "telefono": "666666666",
+      "id": "4"
+    }
+  ],
+  "pc": [
+    {
+      "id": "00-4444",
+      "descripcion": "una descripcion",
+      "precio": 745,
+      "componentes": [
+        "id_componentes"
+      ]
+    }
+  ],
+  "componente": [
+    {
+      "id": "00-55555",
+      "tipo_componente": "tipo",
+      "descripcion": "una descripcion",
+      "nucleos": 2,
+      "hilos": 4,
+      "precio": 745,
+      "memoria_cache": 20,
+      "socket": "1200",
+      "modelo": "rtx 3070 ti",
+      "chipset": "b550",
+      "slots_ram": 2,
+      "puetos_usb_2.0": 2,
+      "puertos_usb_c": 2,
+      "puertos_usb_3.2": 2,
+      "puertos_hdmi": 2,
+      "display_ports": 2,
+      "frecuencia_base": 3.2,
+      "frecuencia_turbo": 5.1,
+      "memoria": 512,
+      "memoria_virtual": 8,
+      "nucleos_cuda": 2400,
+      "nucleos_rt": 40,
+      "nucleos_tensor": 12,
+      "tdp": 150,
+      "marca": "Nvidia",
+      "latencia": 16,
+      "tecnologia": "Amper"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -29,6 +29,11 @@ import { MatListModule } from '@angular/material/list';
 import { FilterCBComponent } from './views/filter-cb/filter-cb.component';
 import { FilterRangeComponent } from './views/filter-range/filter-range.component';
 import { CuerpoComponent } from './views/cuerpo/cuerpo.component';
+import { MiPerfilComponent } from './views/mi-perfil/mi-perfil.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './shared/services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,8 @@ import { CuerpoComponent } from './views/cuerpo/cuerpo.component';
     CarouselComponent,
     FilterCBComponent,
     FilterRangeComponent,
-    CuerpoComponent
+    CuerpoComponent,
+    MiPerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +69,19 @@ import { CuerpoComponent } from './views/cuerpo/cuerpo.component';
     MatGridListModule,
     IvyCarouselModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

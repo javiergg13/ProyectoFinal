@@ -1,29 +1,29 @@
 <div id="contenedor" class="form">
-  <form [formGroup]="usuario">
+  <form [formGroup]="usuario" (submit)="log()">
     <div class="form-group">
       <mat-form-field appearance="legacy">
-        <mat-label>Nombre</mat-label>
+        <mat-label>Email</mat-label>
         <input matInput
-               type="text"
-               placeholder="example54"
-               formControlName="nombre"
+               type="email"
+               placeholder="example54@gmail.com"
+               formControlName="email"
                >
-        <mat-error *ngIf="usuario.get('nombre')?.errors?.required">Introduce un nombre</mat-error>
+        <mat-error *ngIf="usuario.get('email')?.errors?.required">Introduce un email</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Contraseña</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'"
-               formControlName="contraseña"
+               formControlName="password"
                >
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="usuario.get('contraseña')?.errors?.required">Introduce una contraseña</mat-error>
-        <mat-error *ngIf="usuario.get('contraseña')?.errors?.pattern">Contraseña no valida</mat-error>
+        <mat-error *ngIf="usuario.get('password')?.errors?.required">Introduce una password</mat-error>
+        <mat-error *ngIf="usuario.get('password')?.errors?.pattern">Contraseña no valida</mat-error>
       </mat-form-field>
     </div>  
 
-    <button mat-raised-button >Log in</button>
+    <button mat-raised-button type="submit">Log in</button>
     <br/>
     <div>
       <p>¿No tienes una cuenta? <a routerLink="/register">Registrate</a></p>

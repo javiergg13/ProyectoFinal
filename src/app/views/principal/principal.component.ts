@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
   selector: 'app-principal',
@@ -25,9 +26,18 @@ export class PrincipalComponent implements OnInit {
  '/assets/rx6700xt.jpg']}
   ];
 
-  constructor() { }
+  componentes:any = [];
+
+  constructor(private log: LoginService) { }
 
   ngOnInit(): void {
+    this.log.getComponentes().subscribe(
+      res => {
+        console.log(res);
+        this.componentes = res;
+      },
+      err => console.log(err)
+    )
   }
 
 

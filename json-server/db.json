@@ -1,0 +1,22 @@
+{
+"usuario": [
+    {
+        "id_usuario": "00-7777777",
+        "nombre": "Javier",
+        "apellidos": "Guerrero Gallo",
+        "nickname": "xJavii13",
+        "password": "KadfhJ7456",
+        "email": "guerrerogallojavier@gmail.com",
+        "cp": 33970,
+        "tel": 674774983
+    }
+],
+"pc": [
+    {
+        "id_pc": "00-4444",
+        "descripcion": "una descripcion",
+        "precio": 745,
+        "componentes": "componentes"
+    }
+]
+}

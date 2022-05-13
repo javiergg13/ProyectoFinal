@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import {Componente} from 'src/app/shared/interfaces/modelos';
+import {LoginService} from 'src/app/shared/services/login.service';
 
 @Component({
   selector: 'app-favoritos',
@@ -13,16 +11,37 @@ export interface Tile {
   styleUrls: ['./favoritos.component.css']
 })
 export class FavoritosComponent implements OnInit {
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-  
-  constructor() { }
+  dataSource!: MatTableDataSource<Componente>;
 
-  ngOnInit(): void {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private log: LoginService) {
   }
 
+  ngOnInit() {
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+    this.log.getComponentes().subscribe({
+      next: (res) => {
+        console.log("Te has registrado correctamente");
+        const resArray: Componente[] = [];
+        resArray[0] = res;
+        this.dataSource = new MatTableDataSource(resArray)
+        console.log(res)
+      },
+      error: () => {
+        console.log("Error al registrarte")
+      }
+    })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }

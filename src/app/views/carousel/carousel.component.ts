@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Componente } from 'src/app/shared/interfaces/modelos';
 
 @Component({
   selector: 'app-carousel',
@@ -16,9 +17,12 @@ export class CarouselComponent implements OnInit {
     {title: 'titulo', path: '/assets/rx6700xt.jpg'}
   ];
 
+  componentes: Array<Componente> = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    this.componentes[0].marca;
   }
 
 }
