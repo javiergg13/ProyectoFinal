@@ -8,6 +8,8 @@ import { LoginService } from '../shared/services/login.service';
 })
 export class MenuComponent implements OnInit {
 
+  // private nombre: string;
+
   constructor(public log: LoginService) {
    
   }

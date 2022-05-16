@@ -9,6 +9,8 @@ import { FavoritosComponent } from './views/favoritos/favoritos.component';
 import { PrincipalComponent } from './views/principal/principal.component';
 import { MiPerfilComponent } from './views/mi-perfil/mi-perfil.component';
 import { AuthGuard } from './auth.guard';
+import { ConfiguradorComponent } from './views/configurador/configurador.component';
+import { InicioComponent } from './views/inicio/inicio.component';
 
 
 const  routes:  Routes  = [
@@ -18,8 +20,10 @@ const  routes:  Routes  = [
   { path: 'favoritos', component: FavoritosComponent, canActivate: [AuthGuard]},
   { path: 'principal', component: PrincipalComponent},
   { path: 'miPerfil', component: MiPerfilComponent, canActivate: [AuthGuard]},
+  { path: 'configurador', component: ConfiguradorComponent},
+  { path: 'inicio', component: InicioComponent},
 
-  { path: '', redirectTo: '/novedades', pathMatch: 'full'},
+  { path: '', redirectTo: '/inicio', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent}
 ];
 

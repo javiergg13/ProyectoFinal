@@ -1,0 +1,9 @@
+<mat-dialog-content class="mat-content">
+    <h3>¡Cuidado!</h3>
+    <p>Al entrar como invitado perderas algunas funcionalidades importantes, aunque podrás registrarte en el momento que desees.</p>
+</mat-dialog-content>
+<mat-dialog-actions class="mat-actions">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial routerLink="/principal">Continuar como invitado</button>
+</mat-dialog-actions>
+

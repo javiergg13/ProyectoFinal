@@ -34,6 +34,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './shared/services/token-interceptor.service';
+import { ConfiguradorComponent } from './views/configurador/configurador.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+import { ConfirmarInvitadoComponent } from './views/confirmar-invitado/confirmar-invitado.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,10 @@ import { TokenInterceptorService } from './shared/services/token-interceptor.ser
     FilterCBComponent,
     FilterRangeComponent,
     CuerpoComponent,
-    MiPerfilComponent
+    MiPerfilComponent,
+    ConfiguradorComponent,
+    InicioComponent,
+    ConfirmarInvitadoComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +79,8 @@ import { TokenInterceptorService } from './shared/services/token-interceptor.ser
     MatListModule,
     HttpClientModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,
