@@ -1,5 +1,4 @@
 export interface Componente {
-    id: string,
     tipo_componente: string,
     descripcion: string,
     precio: number,
@@ -72,7 +71,6 @@ export interface Psu extends Componente{
 }
 
 export interface Pc {
-    id: string,
     componentes: Array<Componente>
     precio: number,
     descripcion?: string,
@@ -80,7 +78,6 @@ export interface Pc {
 }
 
 export interface Usuario {
-    id: string,
     nombre: string,
     apellidos: string,
     password: string,

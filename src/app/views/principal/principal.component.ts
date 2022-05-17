@@ -33,7 +33,6 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
     this.log.getComponentes().subscribe(
       res => {
-        console.log(res);
         this.componentes = res;
       },
       err => console.log(err)

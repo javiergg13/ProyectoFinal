@@ -32,7 +32,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.usuario)
     if(this.usuario.valid) {
       const body: Usuario = {
         nombre: this.usuario.value.nombre,
@@ -41,12 +40,13 @@ export class RegisterComponent implements OnInit {
         email: this.usuario.value.email,
         cp: this.usuario.value.cp,
         telefono: this.usuario.value.telefono,
-        id: "4"
       }
+      console.log(body)
       this.log.register(body).subscribe({
         next: (res) => {
-          console.log(res);
+          console.log(res)
           localStorage.setItem('token', res.token);
+          localStorage.setItem('email', body.email);
           this.router.navigate(['miPerfil']);
         },
         error: () => {

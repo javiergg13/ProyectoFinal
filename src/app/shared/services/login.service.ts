@@ -12,6 +12,14 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  public saveData(key: string, value: string) {
+    return sessionStorage.setItem(key, value);
+  }
+
+  public getData(value: string) {
+    return localStorage.getItem(value);
+  }
+
   public register(usuario: any){
     return this.http.post<any>(this.URL + '/register', usuario)
   }
@@ -30,19 +38,20 @@ export class LoginService {
 
   logOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
 
-  public getUsuario(id: string) {
-    return this.http.get<Usuario>(this.URL + '/usuarios' + id)
+  public getUsuario(correo: string | null) {
+    return this.http.get<Usuario>(this.URL + '/usuarios/' + correo)
   }
 
   public getUsuarios() {
-    return this.http.get<Usuario>(this.URL + '/usuarios')
+    return this.http.get<Usuario[]>(this.URL + '/usuarios')
   }
 
   public getPc(id: string) {
-    return this.http.get<Pc>(this.URL + '/pcs' + id)
+    return this.http.get<Pc>(this.URL + '/pcs/' + id)
   }
 
   public getPcs() {
@@ -50,7 +59,7 @@ export class LoginService {
   }
 
   public getComponente(id: string) {
-    return this.http.get<Componente>(this.URL + '/componentes' + id)
+    return this.http.get<Componente>(this.URL + '/componentes/' + id)
   }
 
   public getComponentes() {
@@ -58,7 +67,7 @@ export class LoginService {
   }
 
   public addComponente (componente: Componente){
-    return this.http.post<Componente>(this.URL + '/componentes', componente)
+    return this.http.post<Componente>(this.URL + '/componentes/', componente)
   }
 
   public addPc(pc: Pc){

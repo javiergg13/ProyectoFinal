@@ -1,3 +1,229 @@
 <body>
-    
+    <mat-accordion class="example-headers-align">
+      <form [formGroup]="pcCustom">
+
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Ponle nombre a tu creación
+              </mat-panel-title>
+              <mat-panel-description>
+                Añade información sobre el PC
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input matInput>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Descripción</mat-label>
+              <input matInput>
+            </mat-form-field>
+          <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Tarjeta gráfica
+            </mat-panel-title>
+            <mat-panel-description>
+              El musculo, la potencia de un ordenador
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Elige tu componente</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Procesador
+            </mat-panel-title>
+            <mat-panel-description>
+              El cerebro y la rapidez
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Elige tu componente</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Memoria Ram
+            </mat-panel-title>
+            <mat-panel-description>
+              Los pensamientos y la fluidez
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Elige tu componente</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Placa Base
+            </mat-panel-title>
+            <mat-panel-description>
+              El cuerpo sobre el que se construye todo
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Elige tu componente</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Almacenamiento
+            </mat-panel-title>
+            <mat-panel-description>
+              La memoria y la rapidez con la que usarla
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Elige tu componente</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Ventilación
+            </mat-panel-title>
+            <mat-panel-description>
+              La regulación de tempereratura para trabajar agusto
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Elige tu componente</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Caja
+            </mat-panel-title>
+            <mat-panel-description>
+              La armadura y soporte
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Elige tu componente</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Fuente de alimentación
+            </mat-panel-title>
+            <mat-panel-description>
+              Aporta energía a todos los componentes
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" (focus)="picker.open()" readonly>
+          </mat-form-field>
+          <mat-datepicker #picker></mat-datepicker>
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep()">Finalizar</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+        </form>
+      </mat-accordion>
+      
 </body>

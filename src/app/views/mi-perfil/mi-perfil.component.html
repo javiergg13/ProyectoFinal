@@ -1,1 +1,7 @@
-<p>mi-perfil works!</p>
+<div class="prueba">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let usuario of usuarios">
+            {{usuario._id}} - {{usuario.name}} - {{usuario.email}}: {{usuario.telefono}}
+        </li>
+    </ul>
+</div>

@@ -38,6 +38,9 @@ import { ConfiguradorComponent } from './views/configurador/configurador.compone
 import { InicioComponent } from './views/inicio/inicio.component';
 import { ConfirmarInvitadoComponent } from './views/confirmar-invitado/confirmar-invitado.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -80,7 +83,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     AuthGuard,
