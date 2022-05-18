@@ -10,20 +10,42 @@ import { LoginService } from 'src/app/shared/services/login.service';
 export class MiPerfilComponent implements OnInit {
 
   usuarios:any = [];
+  usuario:any = [];
+  componentes: any = [];
 
 
   constructor(private log: LoginService) { }
 
   ngOnInit(): void {
     this.getUsuario();
+    this.getComponentes();
+    this.getUsuarios();
+    console.log(this.componentes)
   }
 
   getUsuario() {
-    console.log(this.log.getData('email'))
     this.log.getUsuario(this.log.getData('email')).subscribe(
       res => {
-        console.log('res ', res)
-        this.usuarios.push(res);
+        this.usuario.push(res);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getComponentes() {
+    this.log.getComponentes().subscribe(
+      res => {
+    console.log(res)
+        this.componentes = res;
+      },
+      err => console.log(err)
+    )
+  }
+
+  getUsuarios() {
+    this.log.getUsuarios().subscribe(
+      res => {
+        this.usuarios = res;
       },
       err => console.log(err)
     )

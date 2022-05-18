@@ -1,7 +1,12 @@
 <div class="prueba">
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let usuario of usuarios">
-            {{usuario._id}} - {{usuario.name}} - {{usuario.email}}: {{usuario.telefono}}
+        <li class="list-group-item" *ngFor="let user of usuario">
+            {{user._id}} - {{user.nombre}} - {{user.email}}: {{user.telefono}}
+        </li>
+    </ul>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let componente of componentes">
+            {{componente._id}} - {{componente.modelo}} - {{componente.marca}}: {{componente.precio}} €
         </li>
     </ul>
 </div>

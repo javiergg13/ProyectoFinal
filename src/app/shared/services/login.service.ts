@@ -63,7 +63,7 @@ export class LoginService {
   }
 
   public getComponentes() {
-    return this.http.get<Componente>(this.URL + '/componentes')
+    return this.http.get<Componente[]>(this.URL + '/componentes')
   }
 
   public addComponente (componente: Componente){

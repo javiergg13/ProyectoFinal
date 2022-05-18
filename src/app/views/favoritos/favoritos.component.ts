@@ -25,8 +25,8 @@ export class FavoritosComponent implements OnInit {
     this.log.getComponentes().subscribe({
       next: (res) => {
         console.log("Te has registrado correctamente");
-        const resArray: Componente[] = [];
-        resArray[0] = res;
+        let resArray: Componente[] = [];
+        resArray = res;
         this.dataSource = new MatTableDataSource(resArray)
         console.log(res)
       },

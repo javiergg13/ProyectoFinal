@@ -1,30 +1,30 @@
 export interface Componente {
-    tipo_componente: string,
+    tipo: string,
     descripcion: string,
     precio: number,
     modelo: string,
     marca: string,
-    imagenes: Array<ImageBitmap>
+    imagenes?: Array<ImageBitmap>
 }
 
 export interface Gpu extends Componente{
-    tecnologia: string,
-    memoria_virtual: number,
+    aarquitectura: string,
+    vram: number,
+    tipo_memoria: string,
     nucleos_cuda: number,
     nucleos_rt: number,
     nucleos_tensor: number,
-    frecuencia_base: number,
+    frecuencia_base?: number,
     frecuencia_turbo: number,
     tdp: number,
-    ancho: number,
-    alto: number
+    dimensiones: string
 }
 export interface Cpu extends Componente{
     nucleos: number,
     hilos: number,
     memoria_cache: number,
     chipset: string,
-    socket: number,
+    socket: string,
     frecuencia_base: number,
     frecuencia_turbo: number,
     tdp: number,
@@ -32,7 +32,7 @@ export interface Cpu extends Componente{
 
 export interface PlacaBase extends Componente{
     chipset: string,
-    socket: number,
+    socket: string,
     slots_ram: number,
     puetos_usb_2_0: number,
     puertos_usb_c: number,
@@ -68,12 +68,14 @@ export interface Ventilacion extends Componente{
 export interface Psu extends Componente{
     potencia: number,  
     certificacion: string,
+    tipo: string
 }
 
 export interface Pc {
     componentes: Array<Componente>
+    tipo: string,
     precio: number,
-    descripcion?: string,
+    descripcion: string,
     imagenes?: Array<ImageBitmap>
 }
 
