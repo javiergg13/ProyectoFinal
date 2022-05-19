@@ -58,8 +58,8 @@ export class LoginService {
     return this.http.get<Pc>(this.URL + '/pcs')
   }
 
-  public getComponente(id: string) {
-    return this.http.get<Componente>(this.URL + '/componentes/' + id)
+  public getComponente(tipo: string) {
+    return this.http.get<Componente>(this.URL + '/componentes/' + tipo)
   }
 
   public getComponentes() {

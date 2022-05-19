@@ -9,4 +9,9 @@
             {{componente._id}} - {{componente.modelo}} - {{componente.marca}}: {{componente.precio}} €
         </li>
     </ul>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let component of componente">
+            {{component._id}} - {{component.modelo}} - {{component.marca}}: {{component.precio}} €
+        </li>
+    </ul>
 </div>

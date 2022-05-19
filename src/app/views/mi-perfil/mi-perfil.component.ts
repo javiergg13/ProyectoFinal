@@ -12,6 +12,7 @@ export class MiPerfilComponent implements OnInit {
   usuarios:any = [];
   usuario:any = [];
   componentes: any = [];
+  componente: any = [];
 
 
   constructor(private log: LoginService) { }
@@ -19,14 +20,23 @@ export class MiPerfilComponent implements OnInit {
   ngOnInit(): void {
     this.getUsuario();
     this.getComponentes();
-    this.getUsuarios();
-    console.log(this.componentes)
+    this.getComponente();
   }
 
   getUsuario() {
     this.log.getUsuario(this.log.getData('email')).subscribe(
       res => {
         this.usuario.push(res);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getComponente() {
+    this.log.getComponente('gpu').subscribe(
+      res => {
+    console.log(res)
+        this.componente.push(res);
       },
       err => console.log(err)
     )
