@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'ProyectoFinal/src/app/shared/classes/usuario';
 import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
@@ -35,8 +34,7 @@ export class MiPerfilComponent implements OnInit {
   getComponente() {
     this.log.getComponente('gpu').subscribe(
       res => {
-    console.log(res)
-        this.componente.push(res);
+        this.componente = res;
       },
       err => console.log(err)
     )
@@ -45,7 +43,6 @@ export class MiPerfilComponent implements OnInit {
   getComponentes() {
     this.log.getComponentes().subscribe(
       res => {
-    console.log(res)
         this.componentes = res;
       },
       err => console.log(err)

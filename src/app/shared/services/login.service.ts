@@ -24,6 +24,10 @@ export class LoginService {
     return this.http.post<any>(this.URL + '/register', usuario)
   }
 
+  public addPcFav(usuario: Usuario){
+    return this.http.put<any>(this.URL + '/usuarios/' + usuario.email, usuario)
+  }
+
   public logIn(usuario: any){
     return this.http.post<any>(this.URL + '/login', usuario)
   }
@@ -59,7 +63,7 @@ export class LoginService {
   }
 
   public getComponente(tipo: string) {
-    return this.http.get<Componente>(this.URL + '/componentes/' + tipo)
+    return this.http.get<Componente[]>(this.URL + '/componentes/' + tipo)
   }
 
   public getComponentes() {

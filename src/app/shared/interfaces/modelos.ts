@@ -4,6 +4,7 @@ export interface Componente {
     precio: number,
     modelo: string,
     marca: string,
+    tdp?: number,
     imagenes?: Array<ImageBitmap>
 }
 
@@ -16,18 +17,18 @@ export interface Gpu extends Componente{
     nucleos_tensor: number,
     frecuencia_base?: number,
     frecuencia_turbo: number,
-    tdp: number,
     dimensiones: string
 }
 export interface Cpu extends Componente{
     nucleos: number,
     hilos: number,
-    memoria_cache: number,
-    chipset: string,
+    memoria_cache_l2?: number,
+    memoria_cache_l3: number,
     socket: string,
     frecuencia_base: number,
     frecuencia_turbo: number,
-    tdp: number,
+    graficos_integrados: false
+
 }
 
 export interface PlacaBase extends Componente{
@@ -41,6 +42,16 @@ export interface PlacaBase extends Componente{
     display_ports: number,
     tamaño: string
 }
+
+export interface PlacaBase extends Componente{
+    puetos_usb_2_0: number,
+    puertos_usb_c: number,
+    puertos_usb_3_2: number,
+    tamaño: string,
+    dimensiones: string,
+    rgb: boolean
+}
+
 export interface DiscosDuros extends Componente{
     memoria: number,  
     velocidad_lectura: number,
@@ -51,24 +62,23 @@ export interface DiscosDuros extends Componente{
 export interface RAM extends Componente{
     memoria: number,  
     latencia: number,
-    tecnologia: string
+    tecnologia: string,
+    velocidad: number
 }
 
 export interface Ventilacion extends Componente{
     tipo_ventilacion: string,
-    led: boolean,
-    tdp: number,
-    ancho: number,
-    alto: number,
+    ancho?: number,
+    rgb: boolean,
+    alto?: number,
     socket: string,
-    rpm: number;
-    tamaño_ventilador: number
+    tamaño?: number
 }
 
 export interface Psu extends Componente{
     potencia: number,  
     certificacion: string,
-    tipo: string
+    cableado: string
 }
 
 export interface Pc {
@@ -76,6 +86,7 @@ export interface Pc {
     tipo: string,
     precio: number,
     descripcion: string,
+    tdp: number,
     imagenes?: Array<ImageBitmap>
 }
 
