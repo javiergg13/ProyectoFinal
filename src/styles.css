@@ -4,7 +4,16 @@
   height: 750px;
 }
 
-html, body { height: 100%; 
+html, body { 
 background-color: #ededed;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.titulo {
+  align-self: center;
+  font-family: Impact;
+  width: 60%;
+  font-size: 45px;
+  color: coral;
+  padding-top: 25px;
+  padding-bottom: 35px;
+}

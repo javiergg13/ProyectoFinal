@@ -40,6 +40,8 @@ export class RegisterComponent implements OnInit {
         email: this.usuario.value.email,
         cp: this.usuario.value.cp,
         telefono: this.usuario.value.telefono,
+        componente_favoritos: [],
+        pc_favoritos: []
       }
       console.log(body)
       this.log.register(body).subscribe({

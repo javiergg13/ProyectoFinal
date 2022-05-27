@@ -1,6 +1,7 @@
-body {
-    background-image: url('/assets/bundle.jpg');
-    background-size: cover;
+:host {
+  display: block;
+  background-color: black;
+  background-image: url('/assets/bundle.jpg');
 }
 
 .example-headers-align .mat-form-field + .mat-form-field {
@@ -15,6 +16,13 @@ form {
 .form {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.descripcion {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
   flex-wrap: wrap;
 }
 

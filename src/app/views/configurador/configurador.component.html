@@ -1,4 +1,6 @@
-<body>
+<div class="titulo">
+  <p>Bienvenido al configurador de PCs</p>
+</div>
     <mat-accordion class="example-headers-align">
       <div class="form">
       <form [formGroup]="pcCustom">
@@ -13,6 +15,7 @@
             <mat-panel-description>
               Añade información sobre el Pc
             </mat-panel-description>
+          <div class="descripcion">
             <mat-form-field appearance="fill" class="fill">
               <mat-label>Nombre</mat-label>
               <input matInput formControlName="nombre">
@@ -24,6 +27,7 @@
               <textarea matInput formControlName="descripcion"></textarea>
               <mat-error *ngIf="pcCustom.get('descripcion')?.errors?.required">Introduce una descripción</mat-error>
             </mat-form-field>
+          </div>
           <mat-action-row>
             <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
           </mat-action-row>
@@ -379,4 +383,3 @@
 
       <p [innerHTML]="newPc?.descripcion"></p>
       
-</body>

@@ -89,6 +89,10 @@ export interface Pc {
     tdp: number,
     imagenes?: Array<ImageBitmap>
 }
+export interface PcFavorito extends Pc {
+    nombre: string,
+    descripcion_propia: string
+}
 
 export interface Usuario {
     nombre: string,
@@ -97,6 +101,6 @@ export interface Usuario {
     email: string,
     cp: number,
     telefono: number,
-    pc_favoritos?: Array<Pc>,
-    componente_favoritos?: Array<Componente>,
+    pc_favoritos?: PcFavorito[],
+    componente_favoritos?: Componente[],
 }

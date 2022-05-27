@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Pc, Usuario } from 'src/app/shared/interfaces/modelos';
+import { Pc, PcFavorito, Usuario } from 'src/app/shared/interfaces/modelos';
 import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class ConfiguradorComponent implements OnInit {
   public ventilaciones: any = [];
   public torres: any = [];
   public psus: any = [];
-  public newPc!: Pc;
+  public newPc!: PcFavorito;
   public usuario!: Usuario;
   public comprobarFormulario: boolean = false;
   public errores: string[] = [];
@@ -57,6 +57,8 @@ export class ConfiguradorComponent implements OnInit {
       this.comprobarFormulario = true;
       if(this.pcCustom.valid){
       this.newPc = {
+        nombre: this.pcCustom.value.nombre,
+        descripcion_propia: this.pcCustom.value.descripcion,
         tipo: "Pc Custom",
         componentes: [this.pcCustom.value.cpu, this.pcCustom.value.psu, 
           this.pcCustom.value.ram, this.pcCustom.value.torre, 
@@ -80,7 +82,6 @@ export class ConfiguradorComponent implements OnInit {
       }
     }
     if(this.comprobarCompatibilidad(this.newPc).length === 0){
-      console.log(this.usuario)
       this.usuario.pc_favoritos?.push(this.newPc);
       this.log.addPcFav(this.usuario).subscribe(
         res => {
@@ -120,7 +121,9 @@ export class ConfiguradorComponent implements OnInit {
   getUsuario() {
     this.log.getUsuario(this.log.getData('email')).subscribe(
       res => {
+        console.log(res)
         this.usuario = res;
+        this.usuario['pc_favoritos'] = [];
       },
       err => console.log(err)
     )
