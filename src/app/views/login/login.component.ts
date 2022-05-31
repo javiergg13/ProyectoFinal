@@ -11,6 +11,8 @@ import { LoginService } from 'src/app/shared/services/login.service';
 export class LoginComponent implements OnInit {
   public hide: boolean = true;
   public usuario: FormGroup
+  public mostrarError: boolean = false;
+  public error!: string;
 
   constructor(private formBuilder: FormBuilder, private login: LoginService,
     private router: Router) {
@@ -26,13 +28,15 @@ export class LoginComponent implements OnInit {
   log() {
     this.login.logIn(this.usuario.value).subscribe(
       res => {
-        console.log(res)
+        this.mostrarError = false;
+        this.error = '';
         localStorage.setItem('token', res.token);
         localStorage.setItem('email', this.usuario.value.email);
         this.router.navigate(['miPerfil']);
       },
       err => {
-        console.log(err)
+        this.mostrarError = true;
+        this.error = err.error.msg;  
       }
     )
   }

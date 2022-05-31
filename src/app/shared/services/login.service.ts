@@ -24,7 +24,7 @@ export class LoginService {
     return this.http.post<any>(this.URL + '/register', usuario)
   }
 
-  public addPcFav(usuario: Usuario){
+  public editUsuario(usuario: Usuario){
     return this.http.put<any>(this.URL + '/usuarios/' + usuario.email, usuario)
   }
 

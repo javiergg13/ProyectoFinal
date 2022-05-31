@@ -25,18 +25,10 @@ export class PrincipalComponent implements OnInit {
 '/assets/rtx3070ti.jpg',
  '/assets/rx6700xt.jpg']}
   ];
-
-  componentes:any = [];
-
+  
   constructor(private log: LoginService) { }
 
   ngOnInit(): void {
-    this.log.getComponentes().subscribe(
-      res => {
-        this.componentes = res;
-      },
-      err => console.log(err)
-    )
   }
 
 

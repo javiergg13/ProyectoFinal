@@ -1,0 +1,85 @@
+<h1 mat-dialog-title>Cambiar {{data.nombre}}</h1>
+<div mat-dialog-content>
+    <div *ngIf="data.nombre === 'password'">
+        <form [formGroup]="formPassword">
+            <mat-form-field>
+                <mat-label>Atigua contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"
+                       formControlName="antiguaContraseña"
+                       >
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formPassword.get('antiguaContraseña')?.errors?.required">Introduce tu antigua contraseña</mat-error>
+              </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nueva contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"
+                       formControlName="contraseña"
+                       >
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formPassword.get('contraseña')?.errors?.required">Introduce una contraseña nueva</mat-error>
+                <mat-error *ngIf="formPassword.get('contraseña')?.errors?.pattern">Contraseña nueva no valida</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Confirmar contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"
+                       formControlName="contraseñaConfirmacion"
+                       >
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formPassword.get('contraseñaConfirmacion')?.errors?.required">Introduce una contraseña</mat-error>
+                <mat-error *ngIf="formPassword.get('contraseñaConfirmacion')?.errors?.confirmedValidator">Las contraseñas no coinciden</mat-error>
+              </mat-form-field>
+        </form>
+        <div mat-dialog-actions class="editar-usuario-footer">
+          <button mat-button mat-dialog-close color="warn">Cancelar</button>
+          <button mat-flat-button mat-dialog-close color="warn" (click)="aplicar()" [disabled]="formPassword.invalid" cdkFocusInitial>Aplicar</button>
+        </div>
+    </div>
+    <div *ngIf="data.nombre === 'email'">
+      <form [formGroup]="formEmail">
+          <mat-form-field>
+              <mat-label>Nuevo email</mat-label>
+              <input matInput formControlName="email">
+              <mat-error *ngIf="formEmail.get('email')?.errors?.required">Introduce tu nuevo email</mat-error>
+              <mat-error *ngIf="formEmail.get('email')?.errors?.pattern">Email no valido</mat-error>
+            </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="editar-usuario-footer">
+        <button mat-button mat-dialog-close color="warn">Cancelar</button>
+        <button mat-flat-button mat-dialog-close color="warn" (click)="aplicar()" [disabled]="formEmail.invalid" cdkFocusInitial>Aplicar</button>
+      </div>
+    </div>
+    <div *ngIf="data.nombre === 'código postal'">
+      <form [formGroup]="formCp">
+          <mat-form-field>
+              <mat-label>Nuevo código postal</mat-label>
+              <input matInput type="tel" formControlName="cp">
+              <mat-error *ngIf="formCp.get('cp')?.errors?.required">Introduce tu nuevo código postal</mat-error>
+              <mat-error *ngIf="formCp.get('cp')?.errors?.pattern">Código postal no valido</mat-error>
+            </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="editar-usuario-footer">
+        <button mat-button mat-dialog-close color="warn">Cancelar</button>
+        <button mat-flat-button mat-dialog-close color="warn" (click)="aplicar()" [disabled]="formCp.invalid" cdkFocusInitial>Aplicar</button>
+      </div>
+    </div>
+    <div *ngIf="data.nombre === 'número de telefono'">
+      <form [formGroup]="formTel">
+          <mat-form-field>
+              <mat-label>Nuevo teléfono</mat-label>
+              <input matInput type="tel" formControlName="tel">
+              <mat-error *ngIf="formTel.get('tel')?.errors?.required">Introduce tu nuevo teléfono</mat-error>
+              <mat-error *ngIf="formTel.get('tel')?.errors?.pattern">Teléfono no valido</mat-error>
+            </mat-form-field>
+      </form>
+      <div mat-dialog-actions class="editar-usuario-footer">
+        <button mat-button mat-dialog-close color="warn">Cancelar</button>
+        <button mat-flat-button mat-dialog-close color="warn" (click)="aplicar()" [disabled]="formTel.invalid" cdkFocusInitial>Aplicar</button>
+      </div>
+    </div>
+</div>

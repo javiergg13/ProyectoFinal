@@ -42,7 +42,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { CommonModule } from '@angular/common';
+import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,8 +62,9 @@ import { MatChipsModule } from '@angular/material/chips';
     MiPerfilComponent,
     ConfiguradorComponent,
     InicioComponent,
-    ConfirmarInvitadoComponent
-  ],
+    ConfirmarInvitadoComponent,
+    EditarUsuarioComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -88,7 +90,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
+    CommonModule
   ],
   providers: [
     AuthGuard,

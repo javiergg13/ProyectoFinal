@@ -1,19 +1,19 @@
 <div id="contenedor" class="form">
-  <form [formGroup]="usuario">
+  <form [formGroup]="formUsuario">
     <div class="form-group">
       <mat-form-field>
         <mat-label>Nombre</mat-label>
         <input matInput
                type="text"
                formControlName="nombre">
-        <mat-error *ngIf="usuario.get('nombre')?.errors?.required">Introduce tu nombre</mat-error>
+        <mat-error *ngIf="formUsuario.get('nombre')?.errors?.required">Introduce tu nombre</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Apellidos</mat-label>
         <input matInput
                type="text"
                formControlName="apellidos">
-        <mat-error *ngIf="usuario.get('apellidos')?.errors?.required">Introduce tus apellidos</mat-error>
+        <mat-error *ngIf="formUsuario.get('apellidos')?.errors?.required">Introduce tus apellidos</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -25,8 +25,8 @@
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="usuario.get('contraseña')?.errors?.required">Introduce una contraseña</mat-error>
-        <mat-error *ngIf="usuario.get('contraseña')?.errors?.pattern">Contraseña no valida</mat-error>
+        <mat-error *ngIf="formUsuario.get('contraseña')?.errors?.required">Introduce una contraseña</mat-error>
+        <mat-error *ngIf="formUsuario.get('contraseña')?.errors?.pattern">Contraseña no valida</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Confirmar contraseña</mat-label>
@@ -36,9 +36,9 @@
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="usuario.get('contraseñaConfirmacion')?.errors?.required">Introduce una contraseña</mat-error>
-        <mat-error *ngIf="usuario.get('contraseñaConfirmacion')?.errors?.pattern">Contraseña no valida</mat-error>
-        <mat-error *ngIf="usuario.get('contraseñaConfirmacion')?.errors?.confirmedValidator">Las contraseñas no coinciden</mat-error>
+        <mat-error *ngIf="formUsuario.get('contraseñaConfirmacion')?.errors?.required">Introduce una contraseña</mat-error>
+        <mat-error *ngIf="formUsuario.get('contraseñaConfirmacion')?.errors?.pattern">Contraseña no valida</mat-error>
+        <mat-error *ngIf="formUsuario.get('contraseñaConfirmacion')?.errors?.confirmedValidator">Las contraseñas no coinciden</mat-error>
       </mat-form-field>
     </div>  
     <div class="form-group">
@@ -47,24 +47,25 @@
         <input matInput
                type="email"
                formControlName="email">
-        <mat-error *ngIf="usuario.get('email')?.errors?.required">Introduce un email</mat-error>
-        <mat-error *ngIf="usuario.get('email')?.errors?.pattern">Email no valido</mat-error>
+        <mat-error *ngIf="formUsuario.get('email')?.errors?.required">Introduce un email</mat-error>
+        <mat-error *ngIf="formUsuario.get('email')?.errors?.pattern">Email no valido</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Codigo postal</mat-label>
         <input matInput type="tel"
                formControlName="cp">
-        <mat-error *ngIf="usuario.get('cp')?.errors?.required">Introduce tu codigo postal</mat-error>
-        <mat-error *ngIf="usuario.get('cp')?.errors?.pattern">Codigo postal no valido</mat-error>
+        <mat-error *ngIf="formUsuario.get('cp')?.errors?.required">Introduce tu codigo postal</mat-error>
+        <mat-error *ngIf="formUsuario.get('cp')?.errors?.pattern">Codigo postal no valido</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Telefono</mat-label>
         <input matInput type="tel"
                formControlName="telefono">
-        <mat-error *ngIf="usuario.get('telefono')?.errors?.required">Introduce tu telefono</mat-error>
-        <mat-error *ngIf="usuario.get('telefono')?.errors?.pattern">Telefono no valido</mat-error>
+        <mat-error *ngIf="formUsuario.get('telefono')?.errors?.required">Introduce tu telefono</mat-error>
+        <mat-error *ngIf="formUsuario.get('telefono')?.errors?.pattern">Telefono no valido</mat-error>
       </mat-form-field>
     </div>    
     <button mat-raised-button (click)="register()">Register</button>
+    <p *ngIf="mostrarError" class="red">Ya existe un usuario con ese mismo correo</p>
   </form>
 </div>

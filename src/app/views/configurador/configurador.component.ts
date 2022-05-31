@@ -83,7 +83,7 @@ export class ConfiguradorComponent implements OnInit {
     }
     if(this.comprobarCompatibilidad(this.newPc).length === 0){
       this.usuario.pc_favoritos?.push(this.newPc);
-      this.log.addPcFav(this.usuario).subscribe(
+      this.log.editUsuario(this.usuario).subscribe(
         res => {
           console.log(this.usuario, res)
           this.router.navigate(['favoritos']);

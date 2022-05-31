@@ -1,0 +1,25 @@
+.principal {
+    display: flex;
+    flex-direction: column;
+}
+
+.icono_nombre {
+    flex-direction: column;
+    text-align: center;
+    font-family: Impact;
+    font-size: 24px;
+}
+
+.perfil-icon {
+    font-size: 150px;
+    margin-top: 30px;
+}
+
+.edit_icon {
+    font-size: 14px;
+}
+
+.info {
+    margin-top: 30px;
+    padding-left: 35px;
+}

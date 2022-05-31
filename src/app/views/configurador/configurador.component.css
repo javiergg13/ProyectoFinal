@@ -1,7 +1,8 @@
 :host {
-  display: block;
-  background-color: black;
+  display: flex;
+  flex-direction: column;
   background-image: url('/assets/bundle.jpg');
+  background-position: center;
 }
 
 .example-headers-align .mat-form-field + .mat-form-field {
@@ -32,10 +33,6 @@ form {
 
 .white {
   color: white;
-}
-
-.red {
-  color: red;
 }
 
 .example-box.cdk-drag-animating {

@@ -1,12 +1,15 @@
 :host {
-    display: block;
-    background-image: url('/assets/inicio.jpg');
+    display: flex;
+    flex-direction: column;
+    background-image: url(/assets/inicio.jpg);
     background-size: cover;
+    height: 100vh;
+    background-position: center;
 }
 
 .mat-buttons {
     display: flex;
-    height: 100%;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
@@ -14,4 +17,5 @@
 .buttons {
     font-size: 20px;
     margin: 15px;
+    margin-top: 35%;
 }

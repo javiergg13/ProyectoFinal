@@ -12,13 +12,14 @@ import { ConfirmedValidator } from '../../shared/services/confirmed.validator';
 })
 export class RegisterComponent implements OnInit {
   public hide: boolean = true;
-  public usuario!: FormGroup
+  public formUsuario!: FormGroup
+  public mostrarError: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private log: LoginService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.usuario = this.formBuilder.group({
+    this.formUsuario = this.formBuilder.group({
       nombre: ['', Validators.required],
       contraseña: ['', [Validators.required, Validators.pattern(new RegExp(/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}/))]],
       apellidos: ['', Validators.required],
@@ -32,28 +33,32 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if(this.usuario.valid) {
+    if(this.formUsuario.valid) {
       const body: Usuario = {
-        nombre: this.usuario.value.nombre,
-        apellidos: this.usuario.value.apellidos,
-        password: this.usuario.value.contraseña,
-        email: this.usuario.value.email,
-        cp: this.usuario.value.cp,
-        telefono: this.usuario.value.telefono,
+        nombre: this.formUsuario.value.nombre,
+        apellidos: this.formUsuario.value.apellidos,
+        password: this.formUsuario.value.contraseña,
+        email: this.formUsuario.value.email,
+        cp: this.formUsuario.value.cp,
+        telefono: this.formUsuario.value.telefono,
         componente_favoritos: [],
         pc_favoritos: []
       }
-      console.log(body)
       this.log.register(body).subscribe({
         next: (res) => {
           console.log(res)
+          if(!res.succes){
+            this.mostrarError = true;
+          } 
+          this.mostrarError = false;
           localStorage.setItem('token', res.token);
           localStorage.setItem('email', body.email);
-          this.router.navigate(['miPerfil']);
+          this.router.navigate(['miPerfil']);    
         },
         error: () => {
+          this.mostrarError = false;
           alert("Error al registrarte")
-          this.usuario.reset();
+          this.formUsuario.reset();
         }
       })
     }
