@@ -1,23 +1,207 @@
 <div class="principal">
-    <div class="filter">
-        <app-filter-cb></app-filter-cb>
-        <app-filter-range></app-filter-range>
-    </div>
-    <div class="carousel">
-        <!-- <app-cuerpo></app-cuerpo> -->
-        <carousel 
-        [cellsToShow]="1"
-        [loop]="true"
-        [autoplay]="true"
-        [autoplayInterval]="3000"
-        [dots]="true"
-        [transitionDuration]="1000"
-        [borderRadius]="15"
-        *ngFor="let producto of productos"
-        >
-            <div class="carousel-cell" *ngFor="let item of producto.path">
-                <img [src]="item" class="img-cell">
+    <!-- <div>
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                [ngClass]="tiposComponentesList.selectedOptions.selected.length > 0 ? 'active-filter-width' : 'no-filter-width'">
+                <mat-expansion-panel-header [ngClass]="{'active-filter-bg': tiposComponentesList.selectedOptions.selected.length > 0}">
+                    <mat-panel-title [ngClass]="{'active-filter-text': tiposComponentesList.selectedOptions.selected.length > 0}">
+                        <span>COMPONENTES</span>
+                        <span *ngIf="tiposComponentesList.selectedOptions.selected.length > 0">:</span>
+                    </mat-panel-title>
+                    <mat-panel-description [ngClass]="{'active-filter-text': tiposComponentesList.selectedOptions.selected.length > 0}"
+                        *ngIf="tiposComponentesList.selectedOptions.selected.length > 0">
+                        <span class="text-truncate">
+                            {{ tiposComponentesList.selectedOptions.selected[0]?.value }}
+                        </span>
+                        <span *ngIf="tiposComponentesList.selectedOptions.selected.length > 1">
+                            &nbsp;+ {{tiposComponentesList.selectedOptions.selected.length - 1}}
+                        </span>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-selection-list #tiposComponentesList>
+                    <mat-list-option *ngFor="let tipoComponente of tiposComponentes" [value]="tipoComponente"> {{tipoComponente}} </mat-list-option>
+                </mat-selection-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                [ngClass]="marcasList.selectedOptions.selected.length > 0 ? 'active-filter-width' : 'no-filter-width'">
+                <mat-expansion-panel-header [ngClass]="{'active-filter-bg': marcasList.selectedOptions.selected.length > 0}">
+                    <mat-panel-title [ngClass]="{'active-filter-text': marcasList.selectedOptions.selected.length > 0}">
+                        <span>MARCAS</span>
+                        <span *ngIf="marcasList.selectedOptions.selected.length > 0">:</span>
+                    </mat-panel-title>
+                    <mat-panel-description [ngClass]="{'active-filter-text': marcasList.selectedOptions.selected.length > 0}"
+                        *ngIf="marcasList.selectedOptions.selected.length > 0">
+                        <span class="text-truncate">
+                            {{ marcasList.selectedOptions.selected[0]?.value }}
+                        </span>
+                        <span *ngIf="marcasList.selectedOptions.selected.length > 1">
+                            &nbsp;+ {{marcasList.selectedOptions.selected.length - 1}}
+                        </span>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-selection-list #marcasList>
+                    <mat-list-option *ngFor="let marca of marcas" [value]="marca"> {{marca}} </mat-list-option>
+                </mat-selection-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div> -->
+    <div class="lista-paginator">
+        <div class="lista">
+            <div *ngFor="let dato of listaParaMostrar" class="list-element">
+                <p class="title">
+                    {{dato.modelo}}
+                </p>
+                <div class="carousel">
+                    <carousel 
+                    [cellsToShow]="1"
+                    [loop]="true"
+                    [dots]="true"
+                    [transitionDuration]="1000">
+                        <div class="carousel-cell" *ngFor="let img of dato.imgs">
+                            <img [src]="img" class="img-cell">
+                        </div>
+                    </carousel>
+                </div>
+                <div *ngIf="dato.tipo === 'gpu'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.nucleos_cuda}} nucleos
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.tdp}} W de potencia
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                           {{dato.vram}} GB {{dato.tipo_memoria}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="dato.tipo === 'cpu'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.nucleos}} nucleos
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.hilos}} hilos
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          socket {{dato.socket}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="dato.tipo === 'ram'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.velocidad}} Mhz
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          CAS {{dato.latencia}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.memoria}} GB {{dato.tecnologia}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="dato.tipo === 'placa base'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.chipset}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.tamano}} 
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          socket {{dato.socket}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="dato.tipo === 'almacenamiento'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.memoria}} GB
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.tecnologia}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.velocidad_escritura}} MB/s escritura
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.velocidad_lectura}} MB/s lectura
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="dato.tipo === 'ventilacion'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.marca}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.tipo_ventilacion}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag *ngIf="dato.rgb">
+                          rgb 
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="dato.tipo === 'torre'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.marca}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.tamano}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag *ngIf="dato.rgb">
+                          rgb 
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          socket {{dato.socket}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                <div *ngIf="dato.tipo === 'psu'">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.marca}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.cableado}}
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.potencia}} W
+                        </mat-chip>
+                        <mat-chip class="example-box" cdkDrag>
+                          {{dato.precio}} €
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
             </div>
-        </carousel>
+        </div>
+        <mat-paginator [length]="listaComponentes.length" [pageSize]="cantidadPorPagina" (page)='paginar($event)'
+	        [pageSizeOptions]="opcionesDeCantidades" yPosition="below" showFirstLastButtons>
+        </mat-paginator>
     </div>
 </div>

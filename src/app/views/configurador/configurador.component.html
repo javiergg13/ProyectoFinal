@@ -38,6 +38,9 @@
             <mat-panel-title>
               Tarjeta gráfica
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('gpu')?.valid">
+              {{pcCustom.value.gpu.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             El musculo, la potencia de un ordenador
@@ -76,6 +79,9 @@
             <mat-panel-title>
               Procesador *
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('cpu')?.valid">
+              {{pcCustom.value.cpu.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             El cerebro y la rapidez
@@ -117,6 +123,9 @@
             <mat-panel-title>
               Memoria Ram *
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('ram')?.valid">
+              {{pcCustom.value.ram.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             Los pensamientos y la fluidez
@@ -158,6 +167,9 @@
             <mat-panel-title>
               Placa Base *
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('placa_base')?.valid">
+              {{pcCustom.value.placa_base.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             El cuerpo sobre el que se construye todo
@@ -199,6 +211,9 @@
             <mat-panel-title>
               Almacenamiento *
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('almacenamiento')?.valid">
+              {{pcCustom.value.almacenamiento.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             La memoria y la rapidez con la que usarla
@@ -229,7 +244,6 @@
               <mat-chip class="example-box" cdkDrag>
                 {{pcCustom.value.almacenamiento.precio}} €
               </mat-chip>
-              
             </mat-chip-list>
           </div>
       
@@ -244,6 +258,9 @@
             <mat-panel-title>
               Ventilación
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('ventilacion')?.valid">
+              {{pcCustom.value.ventilacion.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             La regulación de tempereratura para trabajar a gusto
@@ -283,6 +300,9 @@
             <mat-panel-title>
               Caja *
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('torre')?.valid">
+              {{pcCustom.value.torre.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             La armadura y soporte
@@ -328,6 +348,9 @@
             <mat-panel-title>
               Fuente de alimentación *
             </mat-panel-title>
+            <mat-panel-description *ngIf="pcCustom.get('psu')?.valid">
+              {{pcCustom.value.psu.modelo}}  
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-panel-description>
             Aporta energía a todos los componentes

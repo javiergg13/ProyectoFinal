@@ -26,8 +26,6 @@ import { CarouselComponent } from './views/carousel/carousel.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
-import { FilterCBComponent } from './views/filter-cb/filter-cb.component';
-import { FilterRangeComponent } from './views/filter-range/filter-range.component';
 import { CuerpoComponent } from './views/cuerpo/cuerpo.component';
 import { MiPerfilComponent } from './views/mi-perfil/mi-perfil.component';
 import { MatTableModule } from '@angular/material/table';
@@ -56,8 +54,6 @@ import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.co
     ViewsComponent,
     PrincipalComponent,
     CarouselComponent,
-    FilterCBComponent,
-    FilterRangeComponent,
     CuerpoComponent,
     MiPerfilComponent,
     ConfiguradorComponent,

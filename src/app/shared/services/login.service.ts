@@ -59,7 +59,7 @@ export class LoginService {
   }
 
   public getPcs() {
-    return this.http.get<Pc>(this.URL + '/pcs')
+    return this.http.get<Pc[]>(this.URL + '/pcs')
   }
 
   public getComponente(tipo: string) {

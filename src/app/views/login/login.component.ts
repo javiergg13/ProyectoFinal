@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.error = '';
         localStorage.setItem('token', res.token);
         localStorage.setItem('email', this.usuario.value.email);
-        this.router.navigate(['miPerfil']);
+        this.router.navigate(['principal']);
       },
       err => {
         this.mostrarError = true;

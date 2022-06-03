@@ -3,13 +3,12 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu" class="matMenu">
+    <button class="configurador" mat-menu-item routerLink="/configurador">Configura tu Pc &nbsp;&nbsp;<mat-icon>trending_up</mat-icon></button>
     <button mat-menu-item [matMenuTriggerFor]="componentes">Componentes</button>
-    <button mat-menu-item [matMenuTriggerFor]="pcs">Ordenadores</button>
     <button mat-menu-item routerLink="/nosotros">Acerca de</button>
   </mat-menu>
 
   <mat-menu #componentes="matMenu">
-    <button class="configurador" mat-menu-item routerLink="/configurador">Configura tu Pc <mat-icon>trending_up</mat-icon></button>
     <button mat-menu-item routerLink="/placasBase">Placas Base</button>
     <button mat-menu-item routerLink="/cpus">Procesadores</button>
     <button mat-menu-item routerLink="/almacenamiento">Almacenamiento</button>
@@ -18,12 +17,6 @@
     <button mat-menu-item routerLink="/torres">Torres</button>
     <button mat-menu-item routerLink="/ventilacion">Ventilación</button>
     <button mat-menu-item routerLink="/psus">Fuentes Alimentación</button>
-  </mat-menu>
-
-  <mat-menu #pcs="matMenu">
-    <button class="configurador" mat-menu-item routerLink="/configurador">Configura tu Pc <mat-icon>trending_up</mat-icon></button>
-    <button mat-menu-item routerLink="/gamingPcs">Ordenadores Gaming</button>
-    <button mat-menu-item routerLink="/pcsOficina">Ordenadores de oficina</button>
   </mat-menu>
 
   <span routerLink="principal">BestPC</span>

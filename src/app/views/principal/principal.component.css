@@ -11,8 +11,73 @@
 }
 
 .carousel {
-    min-width: 300px;
-    max-width: 350px;
+    max-width: 175px;
+    min-width: 175px;
+}
+
+.lista-paginator {
+    width: 100%;
+    margin: 25px;
+}
+
+.lista {
     display: flex;
-    margin-left: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+::ng-deep .mat-chip-list-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.list-element {
+    background-color: white;
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border: solid 1px #ccc;
+    margin: 15px;
+    box-shadow: 7px 7px 15px black;
+}
+
+.title {
+    font-family: Impact; 
+    font-size: 20px;  
+}
+
+.active-filter-bg {
+    background-color: teal !important;
+}
+ 
+.active-filter-text {
+    color: white;
+}
+
+.rango-precio {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+@media (max-width: 450px) {
+    .list-element {
+        min-width: 100%;
+    }
+}
+
+@media (min-width: 451px) and (max-width: 900px) {
+    .list-element {
+        min-width: 45%;
+    }
+}
+
+@media (min-width: 901px) {
+    .list-element {
+        min-width: 26%;
+    }
 }
