@@ -9,10 +9,10 @@
         <p>Teléfono: {{usuario?.telefono}}  <mat-icon class="edit_icon" (click)="openDialog('número de telefono')">edit</mat-icon></p>
         <button mat-raised-button (click)="openDialog('password')">Cambiar contraseña</button>
     </div>
-    <div *ngIf="usuario?.pc_favoritos?.length > 0">
+    <div *ngIf="usuario?.componente_favoritos && usuario?.componente_favoritos?.length === 0">
         <h2>Tus Pcs favoritos</h2>
     </div>
-    <div *ngIf="usuario?.componente_favoritos?.length > 0">
+    <div *ngIf="usuario?.pc_favoritos && usuario?.pc_favoritos?.length === 0">
         <h2>Tus Componentes favoritos</h2>
     </div>
 </div>

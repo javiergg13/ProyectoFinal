@@ -83,16 +83,9 @@
 
         <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
           <mat-expansion-panel-header>
-            <ng-container *ngIf="pcCustom.get('cpu')?.invalid && (pcCustom.get('cpu')?.dirty || pcCustom.get('cpu')?.touched); else seleccionaCpu">
-              <mat-panel-title class="red">
+              <mat-panel-title [ngClass]="{'red': pcCustom.get('cpu')?.invalid && (pcCustom.get('cpu')?.dirty || pcCustom.get('cpu')?.touched)}">
                 Procesador *
               </mat-panel-title>
-            </ng-container>
-            <ng-template #seleccionaCpu>
-              <mat-panel-title>
-                Procesador *
-              </mat-panel-title>
-            </ng-template>
             <mat-panel-description *ngIf="pcCustom.get('cpu')?.valid">
               {{pcCustom.value.cpu.modelo}}  ({{pcCustom.value.cpu.socket}})  
             </mat-panel-description>
