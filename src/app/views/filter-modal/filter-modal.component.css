@@ -1,0 +1,56 @@
+.filter {
+    display: flex;
+    flex-direction: column;
+    height: 100%; }
+  
+  .filter-by__button.mat-raised-button {
+    border-radius: 2px;
+    border: solid 1px #e8ebed;
+    background-color: #ffffff;
+    color: #526570;
+    margin-bottom: 16px;
+    min-width: 50%;
+    float: right; }
+  
+  .filter__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px; }
+  
+  .filter__title {
+    font-family: DMSans-Regular;
+    font-size: 27px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.35px;
+    color: #2d373d; }
+  
+  .filter__body {
+    flex: 1; }
+  
+  .filter__actions {
+    display: flex;
+    flex-direction: column; }
+  
+  .filter__checkbox-container {
+    padding: 16px 3px 16px 16px;
+    border-radius: 2px;
+    border: solid 1px #cccfd2;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column; }
+    .filter__checkbox-container .mat-radio-group {
+      display: flex;
+      flex-direction: column; }
+    .filter__checkbox-container .mat-radio-button {
+      margin-top: 16px; }
+  
+  .filter__clear {
+    font-size: 16px;
+    font-family: DMSans-Medium;
+    color: #d81e05;
+    padding: 0;
+    margin-top: 16px; }
+  

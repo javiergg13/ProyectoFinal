@@ -2,8 +2,10 @@
   <button mat-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
-  <mat-menu #menu="matMenu" class="matMenu">
-    <button class="configurador" mat-menu-item routerLink="/configurador">Configura tu Pc &nbsp;&nbsp;<mat-icon>trending_up</mat-icon></button>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngIf="log.loggedIn()">
+      <button class="configurador" mat-menu-item routerLink="/configurador">Configura tu Pc &nbsp;&nbsp;<mat-icon>trending_up</mat-icon></button>
+    </ng-container>
     <button mat-menu-item [matMenuTriggerFor]="componentes">Componentes</button>
     <button mat-menu-item routerLink="/nosotros">Acerca de</button>
   </mat-menu>
@@ -19,7 +21,7 @@
     <button mat-menu-item routerLink="/psus">Fuentes Alimentación</button>
   </mat-menu>
 
-  <span routerLink="principal">BestPC</span>
+  <span class="puntero" routerLink="principal">&nbsp;BestPC</span>
 
   <button class="main-buttons" mat-raised-button routerLink="/nosotros">Acerca de</button>
   <ng-container *ngIf="log.loggedIn()">

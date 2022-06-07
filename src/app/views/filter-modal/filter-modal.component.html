@@ -1,0 +1,31 @@
+<div class="filter" id="filter">
+    <div class="filter__header">
+      <p class="filter__title">Filtrar por:</p>
+      <button mat-button class="filter__close" (click)="notApplyFilter()">
+      </button>
+    </div>
+    <div class="filter__body">
+      <div>
+        <label for="">Busca por Nombre o Cód. Campaña</label>
+        <mat-form-field appearance="standard">
+          <input matInput placeholder="Nombre o Cód. Campaña" [(ngModel)]="filterSelected.filterByText" (keyup)="filterByText()">
+        </mat-form-field>
+      </div>
+      <div class="filter__checkbox-container">
+        <span>Estado de la campaña</span>
+        <mat-radio-group
+        (change)="filterByStatus()"
+        [(ngModel)]="filterSelected.filterByStatus">
+          <mat-radio-button [value]="true">Activada</mat-radio-button>
+          <mat-radio-button [value]="false">Desactivada</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+        <button class="filter__clear" mat-button (click)="clearFilter()" *ngIf="isFiltered">Limpiar filtros</button>
+      </div>
+    </div>
+    <div class="filter__actions">
+      <button mat-raised-button (click)="applyFilter()" [disabled]="disableButton()">Aplicar</button>
+      <button mat-button (click)="notApplyFilter()">Cancelar</button>
+    </div>
+  </div>

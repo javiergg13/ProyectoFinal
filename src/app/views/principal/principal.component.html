@@ -1,4 +1,5 @@
 <div class="principal">
+  <p class="titulo">COMPONENTES POPULARES</p>
     <!-- <div>
         <mat-accordion>
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
@@ -47,12 +48,35 @@
             </mat-expansion-panel>
         </mat-accordion>
     </div> -->
+    <!-- <div class="principal__body">
+      <div class="principal-body__header">
+        <button mat-raised-button class="filter-by__button" (click)="openFilterModal()">
+          <span> Filtrar <span *ngIf="filtrosAplicados > 0">( {{ filtrosAplicados }} )</span></span>
+        </button>
+      </div>
+  
+      <div class="principal-body__list row">
+        <app-filter id="principal__filter" class="principal__filter col-md-3" (filter)="eventHandler($event)">
+        </app-filter>
+      </div>
+    </div> -->
+
     <div class="lista-paginator">
         <div class="lista">
             <div *ngFor="let dato of listaParaMostrar" class="list-element">
-                <p class="title">
-                    {{dato.modelo}}
-                </p>
+                <div class="cabecera-componentes"> 
+                  <div class="cabecera-1">
+                    <p class="title">
+                      {{dato.modelo}}
+                    </p>
+                  </div> 
+                  <ng-container *ngIf="isFavorito(dato); else noFavorito">
+                    <button class="icono-fav" (click)="addFavorito(dato)"><mat-icon>favorite</mat-icon></button>
+                  </ng-container>
+                  <ng-template #noFavorito>
+                    <button class="icono-fav" (click)="addFavorito(dato)"><mat-icon>favorite_border</mat-icon></button>
+                  </ng-template>
+                </div>
                 <div class="carousel">
                     <carousel 
                     [cellsToShow]="1"

@@ -22,11 +22,9 @@ import { FavoritosComponent } from './views/favoritos/favoritos.component';
 import { ViewsComponent } from './views/views.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PrincipalComponent } from './views/principal/principal.component';
-import { CarouselComponent } from './views/carousel/carousel.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
-import { CuerpoComponent } from './views/cuerpo/cuerpo.component';
 import { MiPerfilComponent } from './views/mi-perfil/mi-perfil.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -42,6 +40,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { CommonModule } from '@angular/common';
 import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.component';
+import { FilterComponent } from './views/filter/filter.component';
+import { FilterModalComponent } from './views/filter-modal/filter-modal.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,13 +56,13 @@ import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.co
     FavoritosComponent,
     ViewsComponent,
     PrincipalComponent,
-    CarouselComponent,
-    CuerpoComponent,
     MiPerfilComponent,
     ConfiguradorComponent,
     InicioComponent,
     ConfirmarInvitadoComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    FilterComponent,
+    FilterModalComponent
     ],
   imports: [
     BrowserModule,
@@ -87,7 +90,9 @@ import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.co
     MatNativeDateModule,
     MatSelectModule,
     MatChipsModule,
-    CommonModule
+    CommonModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [
     AuthGuard,

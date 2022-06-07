@@ -5,7 +5,7 @@ export interface Componente {
     modelo: string,
     marca: string,
     tdp?: number,
-    imagenes?: Array<ImageBitmap>
+    imgs?: Array<string>
 }
 
 export interface Gpu extends Componente{
@@ -87,7 +87,7 @@ export interface Pc {
     precio: number,
     descripcion: string,
     tdp: number,
-    imagenes?: Array<ImageBitmap>
+    imgs?: Array<string>
 }
 export interface PcFavorito extends Pc {
     nombre: string,
@@ -104,3 +104,7 @@ export interface Usuario {
     pc_favoritos?: PcFavorito[],
     componente_favoritos?: Componente[],
 }
+export interface IFilterObject {
+    filterByText: string;
+    filterByStatus: boolean | null;
+  }

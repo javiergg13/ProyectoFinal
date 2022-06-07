@@ -1,7 +1,8 @@
 .principal {
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
     flex-wrap: nowrap;
+    align-items: center;
 }
 
 .filter {
@@ -25,6 +26,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 20px;
 }
 ::ng-deep .mat-chip-list-wrapper {
     display: flex;
@@ -48,6 +50,7 @@
 .title {
     font-family: Impact; 
     font-size: 20px;  
+    margin: 0
 }
 
 .active-filter-bg {
@@ -58,11 +61,30 @@
     color: white;
 }
 
+.cabecera-componentes {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cabecera-1 {
+  width: 100%;
+  text-align: center;
+  margin-left: 10%;
+}
+
+.icono-fav {
+  background-color: white;
+  border: 0;
+}
+
 .rango-precio {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-}
+} 
 
 @media (max-width: 450px) {
     .list-element {

@@ -1,0 +1,81 @@
+.filter {
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    width: 100vw;
+    background: #fff;
+    height: 100vh;
+    padding: 16px;
+    display: none;
+    flex-direction: column; }
+    .filter.filter--open {
+      display: flex;
+      margin: 0 -16px; }
+    .filter label {
+      color: #526570; }
+  
+  @media (min-width: 768px) {
+    .filter {
+      position: initial;
+      display: flex;
+      padding-right: 0;
+      width: 100%; }
+    .filter-by__button {
+      display: none; } }
+  
+  .filter__header {
+    display: flex;
+    justify-content: space-between; }
+  
+  .filter__title {
+    font-family: DMSans-Regular;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.35px;
+    color: #2d373d;
+    margin-bottom: 8px; }
+  
+  .filter__body {
+    flex: 1; }
+  
+  .filter__actions {
+    display: flex;
+    flex-direction: column; }
+  
+  .filter__checkbox-container {
+    margin-top: 22px;
+    padding: 16px 3px 16px 16px;
+    border-radius: 2px;
+    border: solid 1px #cccfd2;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column; }
+    .filter__checkbox-container .mat-radio-group {
+      display: flex;
+      flex-direction: column; }
+    .filter__checkbox-container .mat-radio-button {
+      margin-top: 16px; }
+  
+  @media (min-width: 768px) {
+    .filter__close,
+    .filter__actions {
+      display: none; }
+    .filter {
+      position: initial;
+      display: flex;
+      padding-right: 0;
+      padding-top: 0;
+      width: 100%; }
+    .filter-by__button {
+      display: none; } }
+  
+  .filter__clear {
+    font-size: 16px;
+    font-family: DMSans-Medium;
+    color: #d81e05;
+    padding: 0;
+    margin-top: 16px; }
+  

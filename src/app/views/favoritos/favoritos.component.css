@@ -1,18 +1,98 @@
-table {
-    width: 100%;
-  }
-  
-.mat-form-field {
-  font-size: 14px;
-  width: 95%;
-}
-  
-td, th {
-  width: 25%;
+.principal {
+  flex-direction: column;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .filter {
-  margin-left: 10px;
-  width: 25%;
+  display: flex;
+  flex: 0;
+  flex-direction: column;
 }
-  
+
+.carousel {
+  max-width: 175px;
+  min-width: 175px;
+}
+
+.lista-paginator {
+  width: 100%;
+  margin: 25px;
+}
+
+.lista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 20px;
+}
+::ng-deep .mat-chip-list-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.list-element {
+  background-color: white;
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border: solid 1px #ccc;
+  margin: 15px;
+  box-shadow: 7px 7px 15px black;
+}
+
+.title {
+  font-family: Impact; 
+  font-size: 20px;  
+}
+
+.active-filter-bg {
+  background-color: teal !important;
+}
+
+.active-filter-text {
+  color: white;
+}
+
+.rango-precio {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+h2 {
+  padding: 10px;
+}
+
+.main-buttons {
+  margin-left: 10px;
+}
+
+.main-buttons:hover {
+  background-color: white;
+  color: black;
+}
+
+@media (max-width: 450px) {
+  .list-element {
+      min-width: 100%;
+  }
+}
+
+@media (min-width: 451px) and (max-width: 900px) {
+  .list-element {
+      min-width: 45%;
+  }
+}
+
+@media (min-width: 901px) {
+  .list-element {
+      min-width: 26%;
+  }
+}

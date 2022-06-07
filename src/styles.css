@@ -11,14 +11,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .titulo {
   align-self: center;
     font-family: Impact;
-    font-size: 45px;
-    line-height: 55px;
+    font-size: 7vw;
+    line-height: 9vw;
     color: coral;
-    padding-top: 65px;
-    padding-bottom: 35px;
+    padding-top: 5%;
+    padding-bottom: 5%;
     text-align: center;
+    margin:0 !important
 }
 
 .red {
   color: red;
 }
+
+.white {
+  color: white;
+}
+

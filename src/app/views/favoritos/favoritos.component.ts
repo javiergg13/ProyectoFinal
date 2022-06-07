@@ -1,8 +1,5 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import {Componente} from 'src/app/shared/interfaces/modelos';
+import {Component, OnInit} from '@angular/core';
+import {Componente, Pc, Usuario} from 'src/app/shared/interfaces/modelos';
 import {LoginService} from 'src/app/shared/services/login.service';
 
 @Component({
@@ -11,37 +8,37 @@ import {LoginService} from 'src/app/shared/services/login.service';
   styleUrls: ['./favoritos.component.css']
 })
 export class FavoritosComponent implements OnInit {
-  dataSource!: MatTableDataSource<Componente>;
+  usuario!: Usuario;
+  componentesFavoritos: any[] | undefined = [];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  cantidadPorPagina = 5
+  opcionesDeCantidades =[5, 10, 25]
 
-  constructor(private log: LoginService) {
+
+  constructor(private log: LoginService){
   }
 
-  ngOnInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-    this.log.getComponentes().subscribe({
-      next: (res) => {
-        console.log("Te has registrado correctamente");
-        let resArray: Componente[] = [];
-        resArray = res;
-        this.dataSource = new MatTableDataSource(resArray)
-        console.log(res)
+  ngOnInit(): void {
+    this.getComponentesFavoritos();
+  }
+
+  paginar(paginacion: any) {
+    let actual = paginacion.pageIndex * paginacion.pageSize
+    this.componentesFavoritos = this.usuario.componente_favoritos?.slice(
+      actual,
+      actual + paginacion.pageSize
+    );
+  }
+
+  getComponentesFavoritos(){
+    this.log.getUsuario(localStorage.getItem('email')).subscribe(
+      res => {
+        this.usuario = res;
+        this.componentesFavoritos = this.usuario.componente_favoritos?.slice(0, this.cantidadPorPagina)
       },
-      error: () => {
-        console.log("Error al registrarte")
+      err => {
+        console.log(err)
       }
-    })
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    )
   }
 }

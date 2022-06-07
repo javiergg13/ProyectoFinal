@@ -47,8 +47,10 @@ export class EditarUsuarioComponent implements OnInit {
         this.data.usuario.password = this.formPassword.value.contraseña;
         this.log.editUsuario(this.data.usuario).subscribe(
           res => {
+            console.log('todo bien')
           },
           err => {
+            console.log('algo salió mal')
           }
         )
     }
@@ -57,8 +59,10 @@ export class EditarUsuarioComponent implements OnInit {
         this.data.usuario.email = this.formEmail.value.email;
         this.log.editUsuario(this.data.usuario).subscribe(
           res => {
+            console.log('todo bien')
           },
           err => {
+            console.log('algo salió mal')
           }
         )
     }
@@ -67,8 +71,10 @@ export class EditarUsuarioComponent implements OnInit {
         this.data.usuario.cp = this.formCp.value.cp;
         this.log.editUsuario(this.data.usuario).subscribe(
           res => {
+            console.log('todo bien')
           },
           err => {
+            console.log('algo salió mal')
           }
         )
     }
