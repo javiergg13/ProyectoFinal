@@ -78,6 +78,7 @@
 .icono-fav {
   background-color: white;
   border: 0;
+  cursor: pointer;
 }
 
 .rango-precio {

@@ -47,13 +47,14 @@ export class RegisterComponent implements OnInit {
       this.log.register(body).subscribe({
         next: (res) => {
           console.log(res)
-          if(!res.succes){
+          if(res.succes != undefined){
             this.mostrarError = true;
-          } 
-          this.mostrarError = false;
-          localStorage.setItem('token', res.token);
-          localStorage.setItem('email', body.email);
-          this.router.navigate(['miPerfil']);    
+          } else{
+            this.mostrarError = false;
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('email', body.email);
+            this.router.navigate(['miPerfil']); 
+          }   
         },
         error: () => {
           this.mostrarError = false;

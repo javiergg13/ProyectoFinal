@@ -62,7 +62,7 @@
     </div> -->
 
     <div class="lista-paginator">
-        <div class="lista">
+        <div class="lista" *ngIf="usuario">
             <div *ngFor="let dato of listaParaMostrar" class="list-element">
                 <div class="cabecera-componentes"> 
                   <div class="cabecera-1">
@@ -70,12 +70,8 @@
                       {{dato.modelo}}
                     </p>
                   </div> 
-                  <ng-container *ngIf="isFavorito(dato); else noFavorito">
-                    <button class="icono-fav" (click)="addFavorito(dato)"><mat-icon>favorite</mat-icon></button>
-                  </ng-container>
-                  <ng-template #noFavorito>
-                    <button class="icono-fav" (click)="addFavorito(dato)"><mat-icon>favorite_border</mat-icon></button>
-                  </ng-template>
+                  <button class="icono-fav" *ngIf="isFavorito(dato)" (click)="addFavorito(dato)"><mat-icon class="red">favorite</mat-icon></button>
+                  <button class="icono-fav" *ngIf="!isFavorito(dato)" (click)="addFavorito(dato)"><mat-icon>favorite_border</mat-icon></button>
                 </div>
                 <div class="carousel">
                     <carousel 

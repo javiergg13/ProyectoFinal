@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Componente, IFilterObject, Pc, Usuario } from 'src/app/shared/interfaces/modelos';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
@@ -10,20 +11,8 @@ import { FilterModalComponent } from '../filter-modal/filter-modal.component';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-  public panelOpenState = false;
 
   public usuario!: Usuario;
-
-  public filtrosAplicados = 0;
-
-  public filterObject: IFilterObject = {
-    filterByText: '',
-    filterByStatus: null
-  };
-
-  tiposComponentes: string[] = ['Placas base', 'Procesadores', 'Almacenamiento', 'Tarjetas gráficas', 'Memorias RAM', 'Torres', 'Ventilación', 'Fuentes de alimentación'];
-  marcas: string[] = [];
-  listaPcs: Pc[] = [];
 
   listaComponentes: Componente[] = [];
   listaParaMostrar: any[] = [];
@@ -32,12 +21,12 @@ export class PrincipalComponent implements OnInit {
   opcionesDeCantidades =[5, 10, 25]
 
 
-  constructor(private log: LoginService, public dialog: MatDialog){
+  constructor(private log: LoginService, public dialog: MatDialog, private router: Router){
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.getComponentes();
-    this.getUsuario();
+     await this.getUsuario();
   }
 
   paginar(paginacion: any) {
@@ -53,7 +42,6 @@ export class PrincipalComponent implements OnInit {
       res => {
         this.listaComponentes = res;
         this.listaParaMostrar = this.listaComponentes.slice(0, this.cantidadPorPagina)
-        this.recogerMarcas(this.listaComponentes)
       },
       err => {
         console.log(err)
@@ -68,57 +56,40 @@ export class PrincipalComponent implements OnInit {
       },
       err => {
         console.log(err)
+        this.log.logOut();
+        this.router.navigate(['login'])
       }
     )
   }
 
-  recogerMarcas(lista: any[]){
-    for(let elemento of lista){
-      if(!this.marcas.includes(elemento.marca)){
-        this.marcas.push(elemento.marca)
-      }
-    }
-  }
-
-  public openFilterModal(): void {
-    const dialogRef = this.dialog.open(FilterModalComponent, {
-      data: { ...this.filterObject },
-      panelClass: 'full-width-dialog'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.filterObject = result;
-      this.setCounterNumber();
-    });
-  }
-
-  eventHandler(event: IFilterObject) {
-    this.filterObject = event;
-    this.setCounterNumber();
-  }
-
-  setCounterNumber() {
-    this.filtrosAplicados = 0;
-
-    this.filtrosAplicados = this.filterObject.filterByText !== '' ?
-      this.filtrosAplicados + 1 : this.filtrosAplicados;
-
-    this.filtrosAplicados = this.filterObject.filterByStatus !== null ? this.filtrosAplicados + 1 : this.filtrosAplicados;
-  }
-
-  addFavorito(componente: Componente){
-    if(this.usuario.componente_favoritos?.includes(componente)){
+  addFavorito(componente: any){
+    if(this.usuario.componente_favoritos.find((c:any) => componente._id === c._id)){
       let remocedOption = this.usuario.componente_favoritos.findIndex(component => component.modelo === componente.modelo)
       this.usuario.componente_favoritos.splice(remocedOption, 1);
-      this.log.editUsuario(this.usuario);
+      this.log.editUsuario(this.usuario).subscribe(
+        res => {
+          console.log('todo bien')
+        },
+        err => {
+          console.log('algo salió mal')
+        }
+      )
     } else {
-      this.usuario.componente_favoritos?.push(componente)
-      this.log.editUsuario(this.usuario);
+      this.usuario.componente_favoritos.push(componente)
+      this.log.editUsuario(this.usuario).subscribe(
+        res => {
+          console.log('todo bien')
+        },
+        err => {
+          console.log('algo salió mal')
+        }
+      )
     }
   }
 
-  isFavorito(componente: Componente): boolean {
-    if(this.usuario.componente_favoritos?.includes(componente)){
+  isFavorito(componente: any): boolean {
+    console.log(this.usuario.componente_favoritos)
+    if(this.usuario.componente_favoritos.find((c:any) => componente._id === c._id)){
       return true;
     } else {
       return false;

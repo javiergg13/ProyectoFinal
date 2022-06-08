@@ -4,15 +4,9 @@
         <p>{{usuario?.nombre}} {{usuario?.apellidos}}</p>
     </div>
     <div class="info">
-        <p>Email: {{usuario?.email}}  <mat-icon class="edit_icon" (click)="openDialog('email')">edit</mat-icon></p>
-        <p>Código Postal: {{usuario?.cp}}  <mat-icon class="edit_icon" (click)="openDialog('código postal')">edit</mat-icon></p>
-        <p>Teléfono: {{usuario?.telefono}}  <mat-icon class="edit_icon" (click)="openDialog('número de telefono')">edit</mat-icon></p>
+        <div class="info-elements">Email: &nbsp;&nbsp;{{usuario?.email}}  &nbsp;&nbsp;<mat-icon class="edit_icon" (click)="openDialog('email')">edit</mat-icon></div>
+        <div class="info-elements">Código Postal: &nbsp;&nbsp;{{usuario?.cp}}  &nbsp;&nbsp;<mat-icon class="edit_icon" (click)="openDialog('código postal')">edit</mat-icon></div>
+        <div class="info-elements">Teléfono: &nbsp;&nbsp;{{usuario?.telefono}}  &nbsp;&nbsp;<mat-icon class="edit_icon" (click)="openDialog('número de telefono')">edit</mat-icon></div>
         <button mat-raised-button (click)="openDialog('password')">Cambiar contraseña</button>
-    </div>
-    <div *ngIf="usuario?.componente_favoritos && usuario?.componente_favoritos?.length === 0">
-        <h2>Tus Pcs favoritos</h2>
-    </div>
-    <div *ngIf="usuario?.pc_favoritos && usuario?.pc_favoritos?.length === 0">
-        <h2>Tus Componentes favoritos</h2>
     </div>
 </div>

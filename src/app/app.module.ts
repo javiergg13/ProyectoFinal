@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PaginaNoEncontradaComponent } from './views/pagina-no-encontrada/pagina-no-encontrada.component';
-import { AcercaDeNosotrosComponent } from './views/acerca-de-nosotros/acerca-de-nosotros.component';
 import { LoginComponent } from './views/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -50,7 +49,6 @@ import { MatRadioModule } from '@angular/material/radio';
     AppComponent,
     MenuComponent,
     PaginaNoEncontradaComponent,
-    AcercaDeNosotrosComponent,
     LoginComponent,
     RegisterComponent,
     FavoritosComponent,

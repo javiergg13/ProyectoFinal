@@ -1,5 +1,5 @@
 <div class="principal">
-  <ng-container *ngIf="usuario?.componente_favoritos && usuario?.componente_favoritos?.length === 0; else tienesFavoritos">
+  <ng-container *ngIf="usuario?.componente_favoritos === undefined || usuario?.componente_favoritos?.length === 0; else tienesFavoritos">
     <h2>¡Vaya! Parece que todavía no tienes ningún componente cómo favorito</h2>
     <button class="main-buttons" routerLink="/principal" mat-raised-button>Mirar componentes populares</button>
   </ng-container>

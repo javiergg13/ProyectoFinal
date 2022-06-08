@@ -125,7 +125,11 @@ export class ConfiguradorComponent implements OnInit {
         this.usuario = res;
         this.usuario['pc_favoritos'] = [];
       },
-      err => console.log(err)
+      err => {
+        console.log(err)
+        this.log.logOut();
+        this.router.navigate(['login'])
+      }
     )
   }
 

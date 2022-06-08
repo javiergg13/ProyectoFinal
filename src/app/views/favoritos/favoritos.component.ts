@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import {Componente, Pc, Usuario} from 'src/app/shared/interfaces/modelos';
 import {LoginService} from 'src/app/shared/services/login.service';
 
@@ -15,7 +16,7 @@ export class FavoritosComponent implements OnInit {
   opcionesDeCantidades =[5, 10, 25]
 
 
-  constructor(private log: LoginService){
+  constructor(private log: LoginService, private router: Router){
   }
 
   ngOnInit(): void {
@@ -38,6 +39,8 @@ export class FavoritosComponent implements OnInit {
       },
       err => {
         console.log(err)
+        this.log.logOut();
+        this.router.navigate(['login'])
       }
     )
   }

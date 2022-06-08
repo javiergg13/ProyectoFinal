@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/interfaces/modelos';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { EditarUsuarioComponent } from '../editar-usuario/editar-usuario.component';
@@ -13,7 +14,7 @@ export class MiPerfilComponent implements OnInit {
 
   public usuario!: Usuario;
 
-  constructor(private log: LoginService, public dialog: MatDialog) { }
+  constructor(private log: LoginService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.getUsuario();
@@ -24,7 +25,11 @@ export class MiPerfilComponent implements OnInit {
       res => {
         this.usuario = res;
       },
-      err => console.log(err)
+      err => {
+        console.log(err)
+        this.log.logOut();
+        this.router.navigate(['login'])
+      }
     )
   }
 

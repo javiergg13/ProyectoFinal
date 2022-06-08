@@ -101,8 +101,8 @@ export interface Usuario {
     email: string,
     cp: number,
     telefono: number,
-    pc_favoritos?: PcFavorito[],
-    componente_favoritos?: Componente[],
+    pc_favoritos: PcFavorito[],
+    componente_favoritos: Componente[],
 }
 export interface IFilterObject {
     filterByText: string;

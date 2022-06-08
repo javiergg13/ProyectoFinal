@@ -7,7 +7,6 @@
       <button class="configurador" mat-menu-item routerLink="/configurador">Configura tu Pc &nbsp;&nbsp;<mat-icon>trending_up</mat-icon></button>
     </ng-container>
     <button mat-menu-item [matMenuTriggerFor]="componentes">Componentes</button>
-    <button mat-menu-item routerLink="/nosotros">Acerca de</button>
   </mat-menu>
 
   <mat-menu #componentes="matMenu">
@@ -23,7 +22,6 @@
 
   <span class="puntero" routerLink="principal">&nbsp;BestPC</span>
 
-  <button class="main-buttons" mat-raised-button routerLink="/nosotros">Acerca de</button>
   <ng-container *ngIf="log.loggedIn()">
     <button class="main-buttons" mat-raised-button routerLink="/favoritos">Favoritos</button>
   </ng-container>

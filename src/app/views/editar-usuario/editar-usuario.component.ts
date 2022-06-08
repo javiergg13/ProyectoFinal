@@ -25,12 +25,11 @@ export class EditarUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.formPassword = this.formBuilder.group({
-      antiguaContraseña: ['', Validators.required],
       contraseña: ['', [Validators.required, Validators.pattern(new RegExp(/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}/))]],
-      contraseñaConfirmacion: ['', Validators.required]
+      contraseñaConfirmacion: ['']
     }, {
-      validator: ConfirmedValidator('contraseña', 'contraseñaConfirmacion')}
-    );
+      validator: ConfirmedValidator('contraseña', 'contraseñaConfirmacion'),
+    });
     this.formEmail = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(new RegExp(/[a-z0-9_-]+@[a-z0-9.-]+\.[a-z]{2,4}/))]]
     })
@@ -82,9 +81,12 @@ export class EditarUsuarioComponent implements OnInit {
     if(this.data.nombre === 'número de telefono' && this.formTel.valid){
         this.data.usuario.telefono = this.formTel.value.tel;
         this.log.editUsuario(this.data.usuario).subscribe(
-          res => {     
+          res => {
+            console.log('todo bien')
           },
-          err => {}
+          err => {
+            console.log('algo salió mal')
+          }
         )
       }
   }
