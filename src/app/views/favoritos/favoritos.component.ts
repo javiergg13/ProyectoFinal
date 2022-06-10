@@ -73,7 +73,8 @@ export class FavoritosComponent implements OnInit {
   openDialogImgs(imgs: string[]) {
     this.dialog.open(VerImgsComponent, {
       data: {imgs: imgs},
-      panelClass: 'background-white'
+      panelClass: 'background-white',
+      width: '100%'
     })
   }
 

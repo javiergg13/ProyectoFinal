@@ -3,7 +3,8 @@
     [cellsToShow]="1"
     [loop]="true"
     [dots]="true"
-    [transitionDuration]="1000">
+    [transitionDuration]="1000"
+    [arrowsOutside]="true">
         <div class="carousel-cell" *ngFor="let img of data.imgs">
             <img [src]="img" class="img-cell">
         </div>
