@@ -4,8 +4,8 @@ export interface Componente {
     precio: number,
     modelo: string,
     marca: string,
-    tdp?: number,
-    imgs?: Array<string>
+    tdp: number,
+    imgs: Array<string>
 }
 
 export interface Gpu extends Componente{
@@ -15,14 +15,14 @@ export interface Gpu extends Componente{
     nucleos_cuda: number,
     nucleos_rt: number,
     nucleos_tensor: number,
-    frecuencia_base?: number,
+    frecuencia_base: number,
     frecuencia_turbo: number,
     dimensiones: string
 }
 export interface Cpu extends Componente{
     nucleos: number,
     hilos: number,
-    memoria_cache_l2?: number,
+    memoria_cache_l2: number,
     memoria_cache_l3: number,
     socket: string,
     frecuencia_base: number,
@@ -68,11 +68,11 @@ export interface RAM extends Componente{
 
 export interface Ventilacion extends Componente{
     tipo_ventilacion: string,
-    ancho?: number,
+    ancho: number,
     rgb: boolean,
-    alto?: number,
+    alto: number,
     socket: string,
-    tamaño?: number
+    tamaño: number
 }
 
 export interface Psu extends Componente{
@@ -82,12 +82,11 @@ export interface Psu extends Componente{
 }
 
 export interface Pc {
-    componentes: Array<Componente>
+    componentes: Array<any>
     tipo: string,
     precio: number,
     descripcion: string,
     tdp: number,
-    imgs?: Array<string>
 }
 export interface PcFavorito extends Pc {
     nombre: string,
@@ -101,10 +100,6 @@ export interface Usuario {
     email: string,
     cp: number,
     telefono: number,
-    pc_favoritos: PcFavorito[],
-    componente_favoritos: Componente[],
+    pc_favoritos: any[],
+    componente_favoritos: any[],
 }
-export interface IFilterObject {
-    filterByText: string;
-    filterByStatus: boolean | null;
-  }

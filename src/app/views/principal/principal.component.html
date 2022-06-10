@@ -1,77 +1,18 @@
 <div class="principal">
   <p class="titulo">COMPONENTES POPULARES</p>
-    <!-- <div>
-        <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-                [ngClass]="tiposComponentesList.selectedOptions.selected.length > 0 ? 'active-filter-width' : 'no-filter-width'">
-                <mat-expansion-panel-header [ngClass]="{'active-filter-bg': tiposComponentesList.selectedOptions.selected.length > 0}">
-                    <mat-panel-title [ngClass]="{'active-filter-text': tiposComponentesList.selectedOptions.selected.length > 0}">
-                        <span>COMPONENTES</span>
-                        <span *ngIf="tiposComponentesList.selectedOptions.selected.length > 0">:</span>
-                    </mat-panel-title>
-                    <mat-panel-description [ngClass]="{'active-filter-text': tiposComponentesList.selectedOptions.selected.length > 0}"
-                        *ngIf="tiposComponentesList.selectedOptions.selected.length > 0">
-                        <span class="text-truncate">
-                            {{ tiposComponentesList.selectedOptions.selected[0]?.value }}
-                        </span>
-                        <span *ngIf="tiposComponentesList.selectedOptions.selected.length > 1">
-                            &nbsp;+ {{tiposComponentesList.selectedOptions.selected.length - 1}}
-                        </span>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-selection-list #tiposComponentesList>
-                    <mat-list-option *ngFor="let tipoComponente of tiposComponentes" [value]="tipoComponente"> {{tipoComponente}} </mat-list-option>
-                </mat-selection-list>
-            </mat-expansion-panel>
-        </mat-accordion>
-        <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-                [ngClass]="marcasList.selectedOptions.selected.length > 0 ? 'active-filter-width' : 'no-filter-width'">
-                <mat-expansion-panel-header [ngClass]="{'active-filter-bg': marcasList.selectedOptions.selected.length > 0}">
-                    <mat-panel-title [ngClass]="{'active-filter-text': marcasList.selectedOptions.selected.length > 0}">
-                        <span>MARCAS</span>
-                        <span *ngIf="marcasList.selectedOptions.selected.length > 0">:</span>
-                    </mat-panel-title>
-                    <mat-panel-description [ngClass]="{'active-filter-text': marcasList.selectedOptions.selected.length > 0}"
-                        *ngIf="marcasList.selectedOptions.selected.length > 0">
-                        <span class="text-truncate">
-                            {{ marcasList.selectedOptions.selected[0]?.value }}
-                        </span>
-                        <span *ngIf="marcasList.selectedOptions.selected.length > 1">
-                            &nbsp;+ {{marcasList.selectedOptions.selected.length - 1}}
-                        </span>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-selection-list #marcasList>
-                    <mat-list-option *ngFor="let marca of marcas" [value]="marca"> {{marca}} </mat-list-option>
-                </mat-selection-list>
-            </mat-expansion-panel>
-        </mat-accordion>
-    </div> -->
-    <!-- <div class="principal__body">
-      <div class="principal-body__header">
-        <button mat-raised-button class="filter-by__button" (click)="openFilterModal()">
-          <span> Filtrar <span *ngIf="filtrosAplicados > 0">( {{ filtrosAplicados }} )</span></span>
-        </button>
-      </div>
-  
-      <div class="principal-body__list row">
-        <app-filter id="principal__filter" class="principal__filter col-md-3" (filter)="eventHandler($event)">
-        </app-filter>
-      </div>
-    </div> -->
-
     <div class="lista-paginator">
-        <div class="lista" *ngIf="usuario">
+        <div class="lista">
             <div *ngFor="let dato of listaParaMostrar" class="list-element">
                 <div class="cabecera-componentes"> 
                   <div class="cabecera-1">
                     <p class="title">
                       {{dato.modelo}}
                     </p>
+                  </div>
+                  <div *ngIf="usuario">
+                    <button class="icono-fav" *ngIf="isFavorito(dato)" (click)="addFavorito(dato)"><mat-icon class="red">favorite</mat-icon></button>
+                    <button class="icono-fav" *ngIf="!isFavorito(dato)" (click)="addFavorito(dato)"><mat-icon>favorite_border</mat-icon></button>
                   </div> 
-                  <button class="icono-fav" *ngIf="isFavorito(dato)" (click)="addFavorito(dato)"><mat-icon class="red">favorite</mat-icon></button>
-                  <button class="icono-fav" *ngIf="!isFavorito(dato)" (click)="addFavorito(dato)"><mat-icon>favorite_border</mat-icon></button>
                 </div>
                 <div class="carousel">
                     <carousel 

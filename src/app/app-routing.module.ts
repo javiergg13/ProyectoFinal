@@ -16,7 +16,7 @@ const  routes:  Routes  = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'favoritos', component: FavoritosComponent, canActivate: [AuthGuard]},
-  { path: 'principal', component: PrincipalComponent},
+  { path: 'principal/:filtro', component: PrincipalComponent},
   { path: 'miPerfil', component: MiPerfilComponent, canActivate: [AuthGuard]},
   { path: 'configurador', component: ConfiguradorComponent},
   { path: 'inicio', component: InicioComponent},

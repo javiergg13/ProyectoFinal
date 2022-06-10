@@ -31,7 +31,7 @@ export class ConfiguradorComponent implements OnInit {
 
   ngOnInit(): void {
     this.pcCustom = this.formBuilder.group({
-      nombre: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern(new RegExp(/^[a-zA-Z0-9\s]{1,15}$/))]],
       descripcion: ['', Validators.required],
       gpu: [''],
       cpu: ['', [Validators.required]],
@@ -57,7 +57,7 @@ export class ConfiguradorComponent implements OnInit {
       this.comprobarFormulario = true;
       if(this.pcCustom.valid){
       this.newPc = {
-        nombre: this.pcCustom.value.nombre,
+        nombre: this.pcCustom.value.nombre.toUppercase(),
         descripcion_propia: this.pcCustom.value.descripcion,
         tipo: "Pc Custom",
         componentes: [this.pcCustom.value.cpu, this.pcCustom.value.psu, 
@@ -123,7 +123,6 @@ export class ConfiguradorComponent implements OnInit {
       res => {
         console.log(res)
         this.usuario = res;
-        this.usuario['pc_favoritos'] = [];
       },
       err => {
         console.log(err)

@@ -8,6 +8,14 @@ html, body { background-color: #ededed;}
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.cdk-overlay-container{
+  z-index: 99999999;
+}
+
+.background-white .mat-dialog-container {
+  background-color: white;
+}
+
 .titulo {
   align-self: center;
     font-family: Impact;

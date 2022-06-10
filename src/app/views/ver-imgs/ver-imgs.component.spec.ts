@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterModalComponent } from './filter-modal.component';
+import { VerImgsComponent } from './ver-imgs.component';
 
-describe('FilterModalComponent', () => {
-  let component: FilterModalComponent;
-  let fixture: ComponentFixture<FilterModalComponent>;
+describe('VerImgsComponent', () => {
+  let component: VerImgsComponent;
+  let fixture: ComponentFixture<VerImgsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterModalComponent ]
+      declarations: [ VerImgsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterModalComponent);
+    fixture = TestBed.createComponent(VerImgsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

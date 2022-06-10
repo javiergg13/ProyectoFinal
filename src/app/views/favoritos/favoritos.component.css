@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  padding: 5px;
 }
 
 .filter {
@@ -71,12 +72,48 @@ h2 {
 }
 
 .main-buttons {
-  margin-left: 10px;
+  margin: 15px;
 }
 
 .main-buttons:hover {
   background-color: white;
   color: black;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.mat_panel-style {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.panel_title_style {
+  color: black;
+  font-family: Impact
+}
+
+.cabecera-componentes {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cabecera-1 {
+  width: 100%;
+  text-align: center;
+  margin-left: 10%;
+}
+
+.icono-fav {
+  background-color: white;
+  border: 0;
+  cursor: pointer;
 }
 
 @media (max-width: 450px) {

@@ -10,17 +10,17 @@
   </mat-menu>
 
   <mat-menu #componentes="matMenu">
-    <button mat-menu-item routerLink="/placasBase">Placas Base</button>
-    <button mat-menu-item routerLink="/cpus">Procesadores</button>
-    <button mat-menu-item routerLink="/almacenamiento">Almacenamiento</button>
-    <button mat-menu-item routerLink="/graficas">Trajetas gráficas</button>
-    <button mat-menu-item routerLink="/ram">Memoria RAM</button>
-    <button mat-menu-item routerLink="/torres">Torres</button>
-    <button mat-menu-item routerLink="/ventilacion">Ventilación</button>
-    <button mat-menu-item routerLink="/psus">Fuentes Alimentación</button>
+    <button mat-menu-item routerLink="/principal/placa_base">Placas Base</button>
+    <button mat-menu-item routerLink="/principal/cpu">Procesadores</button>
+    <button mat-menu-item routerLink="/principal/almacenamiento">Almacenamiento</button>
+    <button mat-menu-item routerLink="/principal/gpu">Trajetas gráficas</button>
+    <button mat-menu-item routerLink="/principal/ram">Memoria RAM</button>
+    <button mat-menu-item routerLink="/principal/torre">Torres</button>
+    <button mat-menu-item routerLink="/principal/ventilacion">Ventilación</button>
+    <button mat-menu-item routerLink="/principal/psu">Fuentes Alimentación</button>
   </mat-menu>
 
-  <span class="puntero" routerLink="principal">&nbsp;BestPC</span>
+  <span class="puntero" routerLink="principal/todo">&nbsp;BestPC</span>
 
   <ng-container *ngIf="log.loggedIn()">
     <button class="main-buttons" mat-raised-button routerLink="/favoritos">Favoritos</button>

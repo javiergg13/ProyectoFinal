@@ -9,11 +9,9 @@ import { LoginService } from '../shared/services/login.service';
 export class MenuComponent implements OnInit {
 
   constructor(public log: LoginService) {
-   
   }
 
   ngOnInit(): void {
-
   }
 
 }

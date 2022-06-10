@@ -12,6 +12,9 @@
                 <mat-panel-title class="red">
                   Ponle nombre a tu creación *
                 </mat-panel-title>
+                <mat-panel-description *ngIf="pcCustom.get('nombre')?.valid">
+                  {{pcCustom.value.nombre}}  
+                </mat-panel-description>
               </ng-container>
               <ng-template #cambiarColor>
                 <mat-panel-title>
@@ -27,6 +30,7 @@
               <mat-label>Nombre</mat-label>
               <input matInput formControlName="nombre">
               <mat-error *ngIf="pcCustom.get('nombre')?.errors?.required">Introduce un nombre para identificar tu Pc</mat-error>
+              <mat-error *ngIf="pcCustom.get('nombre')?.errors?.pattern">Máximo 15 carcateres</mat-error>
             </mat-form-field>
       
             <mat-form-field appearance="fill" class="fill">
@@ -127,16 +131,9 @@
 
         <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
           <mat-expansion-panel-header>
-            <ng-container *ngIf="pcCustom.get('ram')?.invalid && (pcCustom.get('ram')?.dirty || pcCustom.get('ram')?.touched); else seleccionaRam">
-              <mat-panel-title class="red">
-                Memoria Ram *
-              </mat-panel-title>
-            </ng-container>
-            <ng-template #seleccionaRam>
-              <mat-panel-title>
-                Memoria Ram *
-              </mat-panel-title>
-            </ng-template>
+            <mat-panel-title [ngClass]="{'red': pcCustom.get('ram')?.invalid && (pcCustom.get('ram')?.dirty || pcCustom.get('ram')?.touched)}">
+              Memoria RAM *
+            </mat-panel-title>
             <mat-panel-description *ngIf="pcCustom.get('ram')?.valid">
               {{pcCustom.value.ram.modelo}}  ({{pcCustom.value.ram.tecnologia}}) 
             </mat-panel-description>
@@ -178,16 +175,9 @@
 
         <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
           <mat-expansion-panel-header>
-            <ng-container *ngIf="pcCustom.get('placa_base')?.invalid && (pcCustom.get('placa_base')?.dirty || pcCustom.get('placa_base')?.touched); else seleccionaPlaca_base">
-              <mat-panel-title class="red">
-                Placa Base *
-              </mat-panel-title>
-            </ng-container>
-            <ng-template #seleccionaPlaca_base>
-              <mat-panel-title>
-                Placa Base *
-              </mat-panel-title>
-            </ng-template>
+            <mat-panel-title [ngClass]="{'red': pcCustom.get('placa_base')?.invalid && (pcCustom.get('placa_base')?.dirty || pcCustom.get('placa_base')?.touched)}">
+              Placa Base *
+            </mat-panel-title>
             <mat-panel-description *ngIf="pcCustom.get('placa_base')?.valid">
               {{pcCustom.value.placa_base.modelo}}  ({{pcCustom.value.placa_base.tamano}}  {{pcCustom.value.placa_base.socket}})
             </mat-panel-description>
@@ -229,16 +219,9 @@
 
         <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
           <mat-expansion-panel-header>
-            <ng-container *ngIf="pcCustom.get('almacenamiento')?.invalid && (pcCustom.get('almacenamiento')?.dirty || pcCustom.get('almacenamiento')?.touched); else seleccionaAlmacenamiento">
-              <mat-panel-title class="red">
-                Almacenamiento *
-              </mat-panel-title>
-            </ng-container>
-            <ng-template #seleccionaAlmacenamiento>
-              <mat-panel-title>
-                Almacenamiento *
-              </mat-panel-title>
-            </ng-template>
+            <mat-panel-title [ngClass]="{'red': pcCustom.get('almacenamiento')?.invalid && (pcCustom.get('almacenamiento')?.dirty || pcCustom.get('almacenamiento')?.touched)}">
+              Almacenamiento *
+            </mat-panel-title>
             <mat-panel-description *ngIf="pcCustom.get('almacenamiento')?.valid">
               {{pcCustom.value.almacenamiento.modelo}}  
             </mat-panel-description>
@@ -325,16 +308,9 @@
 
         <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)" hideToggle>
           <mat-expansion-panel-header>
-            <ng-container *ngIf="pcCustom.get('torre')?.invalid && (pcCustom.get('torre')?.dirty || pcCustom.get('torre')?.touched); else seleccionaTorre">
-              <mat-panel-title class="red">
-                Caja *
-              </mat-panel-title>
-            </ng-container>
-            <ng-template #seleccionaTorre>
-              <mat-panel-title>
-                Caja *
-              </mat-panel-title>
-            </ng-template>
+            <mat-panel-title [ngClass]="{'red': pcCustom.get('torre')?.invalid && (pcCustom.get('torre')?.dirty || pcCustom.get('torre')?.touched)}">
+              Caja *
+            </mat-panel-title>
             <mat-panel-description *ngIf="pcCustom.get('torre')?.valid">
               {{pcCustom.value.torre.modelo}}  ({{pcCustom.value.torre.tamano}})
             </mat-panel-description>
@@ -377,16 +353,9 @@
       
         <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8)" hideToggle>
           <mat-expansion-panel-header>
-            <ng-container *ngIf="pcCustom.get('psu')?.invalid && (pcCustom.get('psu')?.dirty || pcCustom.get('psu')?.touched); else seleccionaPsu">
-              <mat-panel-title class="red">
-                Fuente de alimentación *
-              </mat-panel-title>
-            </ng-container>
-            <ng-template #seleccionaPsu>
-              <mat-panel-title>
-                Fuente de alimentación *
-              </mat-panel-title>
-            </ng-template>
+            <mat-panel-title [ngClass]="{'red': pcCustom.get('psu')?.invalid && (pcCustom.get('psu')?.dirty || pcCustom.get('psu')?.touched)}">
+              Fuente de alimentación *
+            </mat-panel-title>
             <mat-panel-description *ngIf="pcCustom.get('psu')?.valid">
               {{pcCustom.value.psu.modelo}}  ({{pcCustom.value.psu.potencia}} W)
             </mat-panel-description>

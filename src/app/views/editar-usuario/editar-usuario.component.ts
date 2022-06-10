@@ -31,7 +31,7 @@ export class EditarUsuarioComponent implements OnInit {
       validator: ConfirmedValidator('contraseña', 'contraseñaConfirmacion'),
     });
     this.formEmail = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern(new RegExp(/[a-z0-9_-]+@[a-z0-9.-]+\.[a-z]{2,4}/))]]
+      email: ['', [Validators.required, Validators.pattern(new RegExp(/[a-z0-9_-]+@[a-z0-9.-]+\.^[a-z]{2,4}$/))]]
     })
     this.formCp = this.formBuilder.group({
       cp: ['', [Validators.required, Validators.pattern(new RegExp(/^(\d){5}$/))]]

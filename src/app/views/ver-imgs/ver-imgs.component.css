@@ -1,0 +1,20 @@
+@media (max-width: 450px) {
+    .carousel {
+        max-width: 175px;
+        min-width: 175px;
+    }
+  }
+  
+  @media (min-width: 451px) and (max-width: 900px) {
+    .carousel {
+        max-width: 325px;
+        min-width: 325px;
+    }
+  }
+  
+  @media (min-width: 901px) {
+    .carousel {
+        max-width: 475px;
+        min-width: 475px;
+    }
+  }

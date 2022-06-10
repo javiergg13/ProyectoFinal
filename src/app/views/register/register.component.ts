@@ -20,13 +20,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.formUsuario = this.formBuilder.group({
-      nombre: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern(new RegExp(/^[a-zA-Z]{1,15}$/))]],
       contraseña: ['', [Validators.required, Validators.pattern(new RegExp(/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}/))]],
-      apellidos: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern(new RegExp(/[a-z0-9_-]+@[a-z0-9.-]+\.[a-z]{2,4}/))]],
-      cp: ['', [Validators.required, Validators.pattern(new RegExp(/(\d){5}/))]],
-      telefono: ['', [Validators.required, Validators.pattern(new RegExp(/(\d){9}/))]],
-      contraseñaConfirmacion: ['', [Validators.required, Validators.pattern(new RegExp(/(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}/))]]
+      apellidos: ['', [Validators.required, Validators.pattern(new RegExp(/^[a-zA-Z\s]{1,30}$/))]],
+      email: ['', [Validators.required, Validators.pattern(new RegExp(/[a-z0-9_-]+@[a-z0-9.-]+\.^[a-z]{2,4}$/))]],
+      cp: ['', [Validators.required, Validators.pattern(new RegExp(/^(\d){5}$/))]],
+      telefono: ['', [Validators.required, Validators.pattern(new RegExp(/^(\d){9}$/))]],
+      contraseñaConfirmacion: ['', Validators.required]
     }, {
         validator: ConfirmedValidator('contraseña', 'contraseñaConfirmacion')}
     );

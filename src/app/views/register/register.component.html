@@ -7,6 +7,7 @@
                type="text"
                formControlName="nombre">
         <mat-error *ngIf="formUsuario.get('nombre')?.errors?.required">Introduce tu nombre</mat-error>
+        <mat-error *ngIf="formUsuario.get('nombre')?.errors?.pattern">Máximo 15 caracteres, no se admiten números ni espacios en blanco</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Apellidos</mat-label>
@@ -14,6 +15,7 @@
                type="text"
                formControlName="apellidos">
         <mat-error *ngIf="formUsuario.get('apellidos')?.errors?.required">Introduce tus apellidos</mat-error>
+        <mat-error *ngIf="formUsuario.get('apellidos')?.errors?.pattern">Máximo 30 carcateres, no se admiten números</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -37,7 +39,6 @@
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-error *ngIf="formUsuario.get('contraseñaConfirmacion')?.errors?.required">Introduce una contraseña</mat-error>
-        <mat-error *ngIf="formUsuario.get('contraseñaConfirmacion')?.errors?.pattern">Contraseña no valida</mat-error>
         <mat-error *ngIf="formUsuario.get('contraseñaConfirmacion')?.errors?.confirmedValidator">Las contraseñas no coinciden</mat-error>
       </mat-form-field>
     </div>  

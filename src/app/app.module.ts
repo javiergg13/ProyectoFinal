@@ -39,10 +39,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { CommonModule } from '@angular/common';
 import { EditarUsuarioComponent } from './views/editar-usuario/editar-usuario.component';
-import { FilterComponent } from './views/filter/filter.component';
-import { FilterModalComponent } from './views/filter-modal/filter-modal.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { VerImgsComponent } from './views/ver-imgs/ver-imgs.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +58,7 @@ import { MatRadioModule } from '@angular/material/radio';
     InicioComponent,
     ConfirmarInvitadoComponent,
     EditarUsuarioComponent,
-    FilterComponent,
-    FilterModalComponent
+    VerImgsComponent
     ],
   imports: [
     BrowserModule,

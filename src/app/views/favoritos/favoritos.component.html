@@ -1,166 +1,429 @@
-<div class="principal">
-  <ng-container *ngIf="usuario?.componente_favoritos === undefined || usuario?.componente_favoritos?.length === 0; else tienesFavoritos">
+<div class="principal" *ngIf="usuario">
+  <div *ngIf="usuario?.pc_favoritos?.length === 0 && usuario?.componente_favoritos?.length === 0">
     <h2>¡Vaya! Parece que todavía no tienes ningún componente cómo favorito</h2>
-    <button class="main-buttons" routerLink="/principal" mat-raised-button>Mirar componentes populares</button>
-  </ng-container>
-  <ng-template #tienesFavoritos>
+    <div class="buttons">
+      <button class="main-buttons" routerLink="/principal/todo" mat-raised-button>Mirar componentes populares</button>
+      <button class="main-buttons" routerLink="/configurador" mat-raised-button>Crear mi PcCustom</button>
+    </div>
+  </div>
+  <div class="principal" *ngIf="usuario.componente_favoritos.length > 0">
     <p class="titulo">TUS COMPONENTES FAVORITOS</p>
     <div class="lista-paginator">
-        <div class="lista">
+        <div class="lista" *ngIf="componentesFavoritos">
             <div *ngFor="let componente of componentesFavoritos" class="list-element">
-                <p class="title">
-                    {{componente.modelo}}
-                </p>
+                <div class="cabecera-componentes"> 
+                  <div class="cabecera-1">
+                    <p class="title">
+                      {{componente?.modelo}}
+                  </p>
+                  </div> 
+                  <button class="icono-fav" (click)="deleteComponenteFavorito(componente)"><mat-icon class="red">favorite</mat-icon></button>
+                </div>
                 <div class="carousel">
                     <carousel 
                     [cellsToShow]="1"
                     [loop]="true"
                     [dots]="true"
                     [transitionDuration]="1000">
-                        <div class="carousel-cell" *ngFor="let img of componente.imgs">
+                        <div class="carousel-cell" *ngFor="let img of componente?.imgs">
                             <img [src]="img" class="img-cell">
                         </div>
                     </carousel>
                 </div>
-                <div *ngIf="componente.tipo === 'gpu'">
+                <div *ngIf="componente?.tipo === 'gpu'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.nucleos_cuda}} nucleos
+                          {{componente?.nucleos_cuda}} nucleos
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.tdp}} W de potencia
+                          {{componente?.tdp}} W de potencia
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                           {{componente.vram}} GB {{componente.tipo_memoria}}
+                           {{componente?.vram}} GB {{componente?.tipo_memoria}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
-                <div *ngIf="componente.tipo === 'cpu'">
+                <div *ngIf="componente?.tipo === 'cpu'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.nucleos}} nucleos
+                          {{componente?.nucleos}} nucleos
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.hilos}} hilos
+                          {{componente?.hilos}} hilos
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          socket {{componente.socket}}
+                          socket {{componente?.socket}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
-                <div *ngIf="componente.tipo === 'ram'">
+                <div *ngIf="componente?.tipo === 'ram'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.velocidad}} Mhz
+                          {{componente?.velocidad}} Mhz
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          CAS {{componente.latencia}}
+                          CAS {{componente?.latencia}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.memoria}} GB {{componente.tecnologia}}
+                          {{componente?.memoria}} GB {{componente?.tecnologia}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
-                <div *ngIf="componente.tipo === 'placa base'">
+                <div *ngIf="componente?.tipo === 'placa base'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.chipset}}
+                          {{componente?.chipset}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.tamano}} 
+                          {{componente?.tamano}} 
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          socket {{componente.socket}}
+                          socket {{componente?.socket}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
-                <div *ngIf="componente.tipo === 'almacenamiento'">
+                <div *ngIf="componente?.tipo === 'almacenamiento'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.memoria}} GB
+                          {{componente?.memoria}} GB
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.tecnologia}}
+                          {{componente?.tecnologia}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.velocidad_escritura}} MB/s escritura
+                          {{componente?.velocidad_escritura}} MB/s escritura
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.velocidad_lectura}} MB/s lectura
+                          {{componente?.velocidad_lectura}} MB/s lectura
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
-                <div *ngIf="componente.tipo === 'ventilacion'">
+                <div *ngIf="componente?.tipo === 'ventilacion'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.marca}}
+                          {{componente?.marca}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.tipo_ventilacion}}
+                          {{componente?.tipo_ventilacion}}
                         </mat-chip>
-                        <mat-chip class="example-box" cdkDrag *ngIf="componente.rgb">
+                        <mat-chip class="example-box" cdkDrag *ngIf="componente?.rgb">
                           rgb 
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
-                <div *ngIf="componente.tipo === 'torre'">
+                <div *ngIf="componente?.tipo === 'torre'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.marca}}
+                          {{componente?.marca}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.tamano}}
+                          {{componente?.tamano}}
                         </mat-chip>
-                        <mat-chip class="example-box" cdkDrag *ngIf="componente.rgb">
+                        <mat-chip class="example-box" cdkDrag *ngIf="componente?.rgb">
                           rgb 
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          socket {{componente.socket}}
+                          socket {{componente?.socket}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
-                <div *ngIf="componente.tipo === 'psu'">
+                <div *ngIf="componente?.tipo === 'psu'">
                     <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.marca}}
+                          {{componente?.marca}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.cableado}}
+                          {{componente?.cableado}}
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.potencia}} W
+                          {{componente?.potencia}} W
                         </mat-chip>
                         <mat-chip class="example-box" cdkDrag>
-                          {{componente.precio}} €
+                          {{componente?.precio}} €
                         </mat-chip>
                     </mat-chip-list>
                 </div>
             </div>
         </div>
-        <mat-paginator [length]="componentesFavoritos?.length" [pageSize]="cantidadPorPagina" (page)='paginar($event)'
+        <mat-paginator [length]="componentesFavoritos?.length" [pageSize]="cantidadPorPagina" (page)='paginarComponentes($event)'
 	        [pageSizeOptions]="opcionesDeCantidades" yPosition="below" showFirstLastButtons>
         </mat-paginator>
     </div>
-  </ng-template>
+  </div>  
+  <div class="principal" *ngIf="usuario.pc_favoritos.length > 0">
+    <p class="titulo">TUS PCS FAVORITOS</p>
+    <div class="lista-paginator">
+        <div class="lista">
+            <div *ngFor="let pc of pcsFavoritos" class="list-element">
+              <div class="cabecera-componentes"> 
+                <div class="cabecera-1">
+                  <p class="title">
+                    {{pc.nombre}}
+                </p>
+                </div> 
+                <button class="icono-fav" (click)="deletePcFavorito(pc)"><mat-icon class="red">favorite</mat-icon></button>
+              </div>
+              <mat-accordion>
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle class="mat_panel-style">
+                  <mat-expansion-panel-header>
+                      <mat-panel-title class="panel_title_style">
+                        Descripción
+                      </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="descripcion">
+                    {{pc.descripcion_propia}}
+                  </div>
+                  <mat-action-row>
+                    <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle class="mat_panel-style">
+                  <mat-expansion-panel-header>
+                      <mat-panel-title class="panel_title_style">
+                        Componentes
+                      </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div *ngFor="let componente of pc.componentes">
+                    <div *ngIf="componente?.tipo === 'gpu'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        Tarjeta gráfica:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.modelo}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.nucleos_cuda}} nucleos
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.tdp}} W de potencia
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.vram}} GB {{componente?.tipo_memoria}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div *ngIf="componente?.tipo === 'cpu'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                          Procesador:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.modelo}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.nucleos}} nucleos
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.hilos}} hilos
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            socket {{componente?.socket}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div *ngIf="componente?.tipo === 'ram'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                          Memoria RAM:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.modelo}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.velocidad}} Mhz
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            CAS {{componente?.latencia}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.memoria}} GB {{componente?.tecnologia}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div *ngIf="componente?.tipo === 'placa base'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                        Placa base:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.modelo}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.chipset}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.tamano}} 
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            socket {{componente?.socket}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div *ngIf="componente?.tipo === 'almacenamiento'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                          Almacenamiento:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.modelo}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.memoria}} GB
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.tecnologia}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.velocidad_escritura}} MB/s escritura
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.velocidad_lectura}} MB/s lectura
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div *ngIf="componente?.tipo === 'ventilacion'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                          Ventilación:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.marca}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.marca}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.tipo_ventilacion}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag *ngIf="componente?.rgb">
+                            rgb 
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div *ngIf="componente?.tipo === 'torre'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                          Torre:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.modelo}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.marca}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.tamano}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag *ngIf="componente?.rgb">
+                            rgb 
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            socket {{componente?.socket}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                    <div *ngIf="componente?.tipo === 'psu'">
+                      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                          Fuente de alimentación:
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.modelo}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.marca}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.cableado}}
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.potencia}} W
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag>
+                            {{componente?.precio}} €
+                          </mat-chip>
+                          <mat-chip class="example-box" cdkDrag (click)="openDialogImgs(componente?.imgs)">
+                            Ver imágenes
+                          </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                  </div>
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                    <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle class="mat_panel-style">
+                  <mat-expansion-panel-header>
+                      <mat-panel-title class="panel_title_style">
+                        Detallles
+                      </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="descripcion">
+                    Tu {{pc.tipo}}:
+                    <li *ngFor="let linea of pc.descripcion.split('<br>')">{{linea}}</li>
+                  </div>
+                  <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                    <button mat-button color="primary" (click)="nextStep()">Cerrar</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+        </div>
+        <mat-paginator [length]="pcsFavoritos?.length" [pageSize]="cantidadPorPagina" (page)='paginarPcs($event)'
+	        [pageSizeOptions]="opcionesDeCantidades" yPosition="below" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+  </div>
 </div>
