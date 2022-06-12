@@ -44,7 +44,7 @@
           </mat-action-row>
         </mat-expansion-panel>
       
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1, pcCustom.value.gpu.imgs)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Tarjeta gráfica
@@ -59,7 +59,7 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="gpu">
-              <mat-option *ngFor="let gpu of gpus" [value]="gpu">{{gpu.modelo}}</mat-option>
+              <mat-option *ngFor="let gpu of gpus" [value]="gpu" (click)="setImgsCarousel(gpu.imgs)">{{gpu.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="pcCustom.get('gpu')?.dirty">
@@ -85,7 +85,7 @@
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2,pcCustom.value.cpu.imgs)" hideToggle>
           <mat-expansion-panel-header>
               <mat-panel-title [ngClass]="{'red': pcCustom.get('cpu')?.invalid && (pcCustom.get('cpu')?.dirty || pcCustom.get('cpu')?.touched)}">
                 Procesador *
@@ -100,7 +100,7 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="cpu">
-              <mat-option *ngFor="let cpu of cpus" [value]="cpu">{{cpu.modelo}}</mat-option>
+              <mat-option *ngFor="let cpu of cpus" [value]="cpu" (click)="setImgsCarousel(cpu.imgs)">{{cpu.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="pcCustom.get('cpu')?.invalid && (pcCustom.get('cpu')?.dirty || pcCustom.get('cpu')?.touched)">
@@ -129,7 +129,7 @@
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3,pcCustom.value.ram.imgs)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title [ngClass]="{'red': pcCustom.get('ram')?.invalid && (pcCustom.get('ram')?.dirty || pcCustom.get('ram')?.touched)}">
               Memoria RAM *
@@ -144,7 +144,7 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="ram">
-              <mat-option *ngFor="let ram of rams" [value]="ram">{{ram.modelo}}</mat-option>
+              <mat-option *ngFor="let ram of rams" [value]="ram"  (click)="setImgsCarousel(ram.imgs)">{{ram.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="!pcCustom.get('ram')?.valid && (pcCustom.get('ram')?.dirty || pcCustom.get('ram')?.touched)">
@@ -173,7 +173,7 @@
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4,pcCustom.value.placa_base.imgs)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title [ngClass]="{'red': pcCustom.get('placa_base')?.invalid && (pcCustom.get('placa_base')?.dirty || pcCustom.get('placa_base')?.touched)}">
               Placa Base *
@@ -188,7 +188,7 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="placa_base">
-              <mat-option *ngFor="let placa of placas" [value]="placa">{{placa.modelo}}</mat-option>
+              <mat-option *ngFor="let placa of placas" [value]="placa" (click)="setImgsCarousel(placa.imgs)">{{placa.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="!pcCustom.get('placa_base')?.valid && (pcCustom.get('placa_base')?.dirty || pcCustom.get('placa_base')?.touched)">
@@ -217,7 +217,7 @@
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5,pcCustom.value.almacenamiento.imgs)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title [ngClass]="{'red': pcCustom.get('almacenamiento')?.invalid && (pcCustom.get('almacenamiento')?.dirty || pcCustom.get('almacenamiento')?.touched)}">
               Almacenamiento *
@@ -232,7 +232,8 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="almacenamiento">
-              <mat-option *ngFor="let almacenamiento of almacenamientos" [value]="almacenamiento">{{almacenamiento.modelo}}</mat-option>
+              <mat-option *ngFor="let almacenamiento of almacenamientos" 
+              [value]="almacenamiento"  (click)="setImgsCarousel(almacenamiento.imgs)">{{almacenamiento.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="!pcCustom.get('almacenamiento')?.valid && (pcCustom.get('almacenamiento')?.dirty || pcCustom.get('almacenamiento')?.touched)">
@@ -264,7 +265,7 @@
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6,pcCustom.value.ventilacion.imgs)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Ventilación
@@ -280,7 +281,8 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="ventilacion">
-              <mat-option *ngFor="let ventilacion of ventilaciones" [value]="ventilacion">{{ventilacion.modelo}}</mat-option>
+              <mat-option *ngFor="let ventilacion of ventilaciones" 
+              [value]="ventilacion" (click)="setImgsCarousel(ventilacion.imgs)">{{ventilacion.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="pcCustom.get('ventilacion')?.dirty">
@@ -306,7 +308,7 @@
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 7" (opened)="setStep(7,pcCustom.value.torre.imgs)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title [ngClass]="{'red': pcCustom.get('torre')?.invalid && (pcCustom.get('torre')?.dirty || pcCustom.get('torre')?.touched)}">
               Caja *
@@ -322,7 +324,7 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="torre">
-              <mat-option *ngFor="let torre of torres" [value]="torre">{{torre.modelo}}</mat-option>
+              <mat-option *ngFor="let torre of torres" [value]="torre" (click)="setImgsCarousel(torre.imgs)">{{torre.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="!pcCustom.get('torre')?.valid && (pcCustom.get('torre')?.dirty || pcCustom.get('torre')?.touched)">
@@ -351,7 +353,7 @@
           </mat-action-row>
         </mat-expansion-panel>
       
-        <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8)" hideToggle>
+        <mat-expansion-panel [expanded]="step === 8" (opened)="setStep(8,pcCustom.value.psu.imgs)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title [ngClass]="{'red': pcCustom.get('psu')?.invalid && (pcCustom.get('psu')?.dirty || pcCustom.get('psu')?.touched)}">
               Fuente de alimentación *
@@ -367,7 +369,7 @@
           <mat-form-field appearance="fill" class="fill">
             <mat-label>Elige tu componente</mat-label>
             <mat-select formControlName="psu">
-              <mat-option *ngFor="let psu of psus" [value]="psu">{{psu.modelo}}</mat-option>
+              <mat-option *ngFor="let psu of psus" [value]="psu" (click)="setImgsCarousel(psu.imgs)">{{psu.modelo}}</mat-option>
             </mat-select>
           </mat-form-field>
           <div *ngIf="!pcCustom.get('psu')?.valid && (pcCustom.get('psu')?.dirty || pcCustom.get('psu')?.touched)">
@@ -411,5 +413,19 @@
         </form>
       </div>
     </mat-accordion>
+    <div *ngIf="imgsAMostrar.length > 0" class="contenedor_carousel">
+      <div class="carousel">
+        <carousel 
+        [cellsToShow]="1"
+        [loop]="true"
+        [dots]="true"
+        [transitionDuration]="1000"
+        [arrowsOutside]="true">
+            <div class="carousel-cell" *ngFor="let img of imgsAMostrar">
+                <img [src]="img" class="img-cell">
+            </div>
+        </carousel>
+    </div>
+    </div>
   </div>
       

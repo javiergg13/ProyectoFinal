@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/shared/services/login.service';
 export class ConfiguradorComponent implements OnInit {
   disableSelect = new FormControl(false);
   step = 0;
+  public imgsAMostrar: string[] = []
   public pcCustom!: FormGroup
   public gpus: any = [];
   public cpus: any = [];
@@ -57,7 +58,7 @@ export class ConfiguradorComponent implements OnInit {
       this.comprobarFormulario = true;
       if(this.pcCustom.valid){
       this.newPc = {
-        nombre: this.pcCustom.value.nombre.toUppercase(),
+        nombre: this.pcCustom.value.nombre,
         descripcion_propia: this.pcCustom.value.descripcion,
         tipo: "Pc Custom",
         componentes: [this.pcCustom.value.cpu, this.pcCustom.value.psu, 
@@ -132,8 +133,22 @@ export class ConfiguradorComponent implements OnInit {
     )
   }
 
-  setStep(index: number) {
+  setStep(index: number, imgs?: string[]) {
     this.step = index;
+    if(imgs){
+      this.setImgsCarousel(imgs)
+    } else {
+      this.imgsAMostrar = []
+    }
+  }
+
+  setImgsCarousel(imgs: string[]){
+    if(imgs){
+      this.imgsAMostrar = []
+      this.imgsAMostrar = imgs
+    } else {
+      this.imgsAMostrar = []
+    }  
   }
 
   nextStep() {

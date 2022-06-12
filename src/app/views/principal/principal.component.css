@@ -87,19 +87,19 @@
     margin-top: 20px;
 } 
 
-@media (max-width: 450px) {
+@media (max-width: 730px) {
     .list-element {
         min-width: 100%;
     }
 }
 
-@media (min-width: 451px) and (max-width: 900px) {
+@media (min-width: 730px) and (max-width: 1050px) {
     .list-element {
         min-width: 45%;
     }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1051px) {
     .list-element {
         min-width: 26%;
     }

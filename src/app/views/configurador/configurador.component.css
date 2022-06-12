@@ -5,6 +5,23 @@
   background-position: center;
 }
 
+.cuerpo{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contenedor_carousel{
+  display: flex;
+  justify-content: center
+}
+
+.carousel {
+  max-width: 175px;
+  min-width: 175px;
+}
+
 .example-headers-align .mat-form-field + .mat-form-field {
   margin-right: 8px;
 }

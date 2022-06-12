@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import {Componente, Pc, Usuario} from 'src/app/shared/interfaces/modelos';
-import {LoginService} from 'src/app/shared/services/login.service';
+import { Usuario } from 'src/app/shared/interfaces/modelos';
+import { LoginService } from 'src/app/shared/services/login.service';
 import { VerImgsComponent } from '../ver-imgs/ver-imgs.component';
 
 @Component({
