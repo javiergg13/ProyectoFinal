@@ -8,19 +8,12 @@
 
         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle class="expansion_panel">
             <mat-expansion-panel-header>
-              <ng-container *ngIf="(pcCustom.get('nombre')?.errors?.required && pcCustom.get('nombre')?.touched) || (pcCustom.get('descripcion')?.errors?.required && pcCustom.get('descripcion')?.touched); else cambiarColor">
-                <mat-panel-title class="red">
-                  Ponle nombre a tu creación *
-                </mat-panel-title>
-                <mat-panel-description *ngIf="pcCustom.get('nombre')?.valid">
-                  {{pcCustom.value.nombre}}  
-                </mat-panel-description>
-              </ng-container>
-              <ng-template #cambiarColor>
-                <mat-panel-title>
-                  Ponle nombre a tu creación *
-                </mat-panel-title>
-              </ng-template>
+              <mat-panel-title [ngClass]="{'red': pcCustom.get('nombre')?.invalid && (pcCustom.get('nombre')?.dirty || pcCustom.get('nombre')?.touched)}">
+                Ponle nombre a tu creación *
+              </mat-panel-title>
+              <mat-panel-description *ngIf="pcCustom.get('nombre')?.valid">
+                {{pcCustom.value.nombre}}  
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-panel-description>
               Añade información sobre el Pc
@@ -87,9 +80,9 @@
 
         <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2,pcCustom.value.cpu.imgs)" hideToggle>
           <mat-expansion-panel-header>
-              <mat-panel-title [ngClass]="{'red': pcCustom.get('cpu')?.invalid && (pcCustom.get('cpu')?.dirty || pcCustom.get('cpu')?.touched)}">
-                Procesador *
-              </mat-panel-title>
+            <mat-panel-title [ngClass]="{'red': pcCustom.get('cpu')?.invalid && (pcCustom.get('cpu')?.dirty || pcCustom.get('cpu')?.touched)}">
+              Procesador *
+            </mat-panel-title>
             <mat-panel-description *ngIf="pcCustom.get('cpu')?.valid">
               {{pcCustom.value.cpu.modelo}}  ({{pcCustom.value.cpu.socket}})  
             </mat-panel-description>
