@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Pc, PcFavorito, Usuario } from 'src/app/shared/interfaces/modelos';
+import { Gpu, Pc, PcFavorito, Usuario } from 'src/app/shared/interfaces/modelos';
 import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
@@ -43,15 +43,7 @@ export class ConfiguradorComponent implements OnInit {
       torre: ['', Validators.required],
       psu: ['', Validators.required]
     });
-    this.getGpus();
-    this.getVentilaciones();
-    this.getAlmacenamientos();
-    this.getTorres();
-    this.getPlacas();
-    this.getPsus();
-    this.getRams();
-    this.getCpus();
-    this.getUsuario();
+    this.getComponentes();
   }
 
   crearPc() {
@@ -159,73 +151,10 @@ export class ConfiguradorComponent implements OnInit {
     this.step--;
   }
 
-  getGpus() {
-    this.log.getComponente('gpu').subscribe(
+  getComponentes() {
+    this.log.getComponentes().subscribe(
       res => {
-        this.gpus = res;
-      },
-      err => console.log(err)
-    )
-  }
-  
-  getCpus() {
-    this.log.getComponente('cpu').subscribe(
-      res => {
-        this.cpus = res;
-      },
-      err => console.log(err)
-    )
-  }
-
-  getRams() {
-    this.log.getComponente('ram').subscribe(
-      res => {
-        this.rams = res;
-      },
-      err => console.log(err)
-    )
-  }
-
-  getPlacas() {
-    this.log.getComponente('placa base').subscribe(
-      res => {
-        this.placas = res;
-      },
-      err => console.log(err)
-    )
-  }
-
-  getAlmacenamientos() {
-    this.log.getComponente('almacenamiento').subscribe(
-      res => {
-        this.almacenamientos = res;
-      },
-      err => console.log(err)
-    )
-  }
-
-  getVentilaciones() {
-    this.log.getComponente('ventilacion').subscribe(
-      res => {
-        this.ventilaciones = res;
-      },
-      err => console.log(err)
-    )
-  }
-
-  getTorres() {
-    this.log.getComponente('torre').subscribe(
-      res => {
-        this.torres = res;
-      },
-      err => console.log(err)
-    )
-  }
-
-  getPsus() {
-    this.log.getComponente('psu').subscribe(
-      res => {
-        this.psus = res;
+        this.gpus = res.filter(componente => componente.tipo === 'gpu');
       },
       err => console.log(err)
     )
