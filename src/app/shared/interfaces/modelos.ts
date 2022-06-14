@@ -43,15 +43,6 @@ export interface PlacaBase extends Componente{
     tamaño: string
 }
 
-export interface PlacaBase extends Componente{
-    puetos_usb_2_0: number,
-    puertos_usb_c: number,
-    puertos_usb_3_2: number,
-    tamaño: string,
-    dimensiones: string,
-    rgb: boolean
-}
-
 export interface DiscosDuros extends Componente{
     memoria: number,  
     velocidad_lectura: number,
