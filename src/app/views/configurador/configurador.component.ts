@@ -44,6 +44,7 @@ export class ConfiguradorComponent implements OnInit {
       psu: ['', Validators.required]
     });
     this.getComponentes();
+    this.getUsuario();
   }
 
   crearPc() {
