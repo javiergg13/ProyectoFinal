@@ -155,6 +155,13 @@ export class ConfiguradorComponent implements OnInit {
     this.log.getComponentes().subscribe(
       res => {
         this.gpus = res.filter(componente => componente.tipo === 'gpu');
+        this.cpus = res.filter(componente => componente.tipo === 'cpu');
+        this.rams = res.filter(componente => componente.tipo === 'ram');
+        this.placas = res.filter(componente => componente.tipo === 'placa base');
+        this.almacenamientos = res.filter(componente => componente.tipo === 'almacenamiento');
+        this.ventilaciones = res.filter(componente => componente.tipo === 'ventilacion');
+        this.torres = res.filter(componente => componente.tipo === 'torre');
+        this.psus = res.filter(componente => componente.tipo === 'psu');
       },
       err => console.log(err)
     )
